@@ -8,9 +8,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.kevin.blogappkotlin.R
 import com.kevin.blogappkotlin.core.Resource
-import com.kevin.blogappkotlin.data.remote.HomeScreenDataSource
+import com.kevin.blogappkotlin.data.remote.home.HomeScreenDataSource
 import com.kevin.blogappkotlin.databinding.FragmentHomeBinding
-import com.kevin.blogappkotlin.domain.HomeScreenRepoImplement
+import com.kevin.blogappkotlin.domain.home.HomeScreenRepoImplement
 import com.kevin.blogappkotlin.presentation.HomeScreenViewModel
 import com.kevin.blogappkotlin.presentation.HomeScreenViewModelFactory
 import com.kevin.blogappkotlin.ui.main.adapter.HomeScreenAdapter

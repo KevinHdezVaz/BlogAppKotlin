@@ -1,4 +1,4 @@
-package com.kevin.blogappkotlin.domain
+package com.kevin.blogappkotlin.domain.home
 
 import com.kevin.blogappkotlin.core.Resource
 import com.kevin.blogappkotlin.data.model.Posts

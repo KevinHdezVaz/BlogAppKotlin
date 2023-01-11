@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.kevin.blogappkotlin.core.Resource
-import com.kevin.blogappkotlin.domain.HomeScreenRepo
+import com.kevin.blogappkotlin.domain.home.HomeScreenRepo
 
 import kotlinx.coroutines.Dispatchers
 

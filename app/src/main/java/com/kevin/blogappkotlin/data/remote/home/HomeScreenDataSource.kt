@@ -1,7 +1,6 @@
-package com.kevin.blogappkotlin.data.remote
+package com.kevin.blogappkotlin.data.remote.home
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.kevin.blogappkotlin.core.Resource
 import com.kevin.blogappkotlin.data.model.Posts
 import kotlinx.coroutines.tasks.await
