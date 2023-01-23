@@ -1,13 +1,13 @@
 package com.kevin.blogappkotlin.data.remote.home
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.kevin.blogappkotlin.core.Resource
+import com.kevin.blogappkotlin.core.Result
 import com.kevin.blogappkotlin.data.model.Posts
 import kotlinx.coroutines.tasks.await
 
 class HomeScreenDataSource {
 
-    suspend fun getLatestPost(): Resource<List<Posts>>{
+    suspend fun getLatestPost(): Result<List<Posts>> {
 //buscamos la informacion en firebase desde aqui
 
         //desde aqui agregamos los post a una lista mutable
@@ -20,6 +20,6 @@ class HomeScreenDataSource {
             }
         }
 
-        return Resource.Success(postList)
+        return Result.Success(postList)
     }
 }

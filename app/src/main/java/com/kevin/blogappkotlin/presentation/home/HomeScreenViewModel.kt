@@ -3,7 +3,7 @@ package com.kevin.blogappkotlin.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
-import com.kevin.blogappkotlin.core.Resource
+import com.kevin.blogappkotlin.core.Result
 import com.kevin.blogappkotlin.domain.home.HomeScreenRepo
 
 import kotlinx.coroutines.Dispatchers
@@ -22,12 +22,12 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
     //EN ESTA PARTE YA ESTA TODE LISTO PARA IR A BUSCAR LA INFORMACION AL SERVIDOR
 
     fun fetchLatestPosts() = liveData (Dispatchers.IO){
-        emit(Resource.Loading())
+        emit(Result.Loading())
         try{
             emit(repo.getLatestPost())
         }catch (e:Exception){
 
-            emit(Resource.Failure(e))
+            emit(Result.Failure(e))
         }
     }
 }
