@@ -6,5 +6,7 @@ data class Posts (
     val profile_pictura: String ="",
     val profile_name : String="",
         val post_timestamp: Timestamp?= null,
-    val post_image:String=""
+    val post_image:String="",
+    val post_description:String="",
+    val uid :String=""
         )

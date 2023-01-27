@@ -1,5 +1,6 @@
 package com.kevin.blogappkotlin.presentation.auth
 
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
@@ -25,6 +26,18 @@ class AuthViewModel(private val repo: AuthRepo):ViewModel() {
 
         try {
             emit ( Result.Success(repo.sigUp(email,password,username)))
+
+        }catch (e:Exception){
+            emit(Result.Failure(e))
+        }
+    }
+
+
+    fun updateUserProfile(imagebitmap:Bitmap, username:String) = liveData(Dispatchers.IO) {
+        emit(Result.Loading())
+
+        try {
+            emit ( Result.Success(repo.updateProfile(imagebitmap, username )))
 
         }catch (e:Exception){
             emit(Result.Failure(e))

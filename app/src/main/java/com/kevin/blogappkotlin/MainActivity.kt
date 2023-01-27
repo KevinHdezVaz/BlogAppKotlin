@@ -9,11 +9,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.MediaStore.ACTION_IMAGE_CAPTURE
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.kevin.blogappkotlin.core.hide
+import com.kevin.blogappkotlin.core.show
 import com.kevin.blogappkotlin.databinding.ActivityMainBinding
 import java.io.ByteArrayOutputStream
 import java.util.UUID
@@ -21,66 +29,43 @@ import java.util.UUID
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var resultLauncher: ActivityResultLauncher<Intent?>
+     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        /*
-          resultLauncher = registerForActivityResult(
-            ActivityResultContracts
-                .StartActivityForResult()
-        ){
-            if (it.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = it.data
-                val imageBitmap = data?.extras?.get("data") as Bitmap
-                binding.imageView.setImageBitmap(imageBitmap)
-                uploadPictureStorage(imageBitmap)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        binding.bottomNavigation.setupWithNavController(navController)
+        observeDestinationChange()
+
+
+
+    }
+
+    private fun observeDestinationChange() {
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when(destination.id) {
+                R.id.loginFragment -> {
+                    binding.bottomNavigation.hide()
+                }
+
+                R.id.registerFragment -> {
+                    binding.bottomNavigation.hide()
+                }
+
+                R.id.profileFragment -> {
+                    binding.bottomNavigation.show()
+                }
+                R.id.setupProfileFragment -> {
+                binding.bottomNavigation.hide()
             }
-        }
-         */
-    }
 
-
-    fun tomarFoto() {
-        val takePictureIntent = Intent(ACTION_IMAGE_CAPTURE)
-        try {
-            resultLauncher.launch(takePictureIntent)
-
-        } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this@MainActivity, "no se encontro camrara", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
-    private fun uploadPictureStorage(bitmap: Bitmap) {
-
-        val storageRef = FirebaseStorage.getInstance().reference
-        val imageref = storageRef.child("imagenes/${UUID.randomUUID()}.jpg")
-        val baos = ByteArrayOutputStream()
-
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
-
-        val uploadTask = imageref.putBytes(data)
-        uploadTask.continueWithTask {
-            if (!it.isSuccessful) {
-                it.exception?.let {
-                    throw it
+                else -> {
+                    binding.bottomNavigation.show()
                 }
             }
-
-            imageref.downloadUrl
-        }.addOnCompleteListener { acomodo ->
-            if (acomodo.isSuccessful) {
-                val downloadUrl = acomodo.result.toString()
-                FirebaseFirestore.getInstance().collection("ciudades").document("LA")
-                    .update(mapOf("imageurl" to downloadUrl))
-                Toast.makeText(this@MainActivity, downloadUrl, Toast.LENGTH_SHORT).show()
-            }
         }
-
     }
 
 

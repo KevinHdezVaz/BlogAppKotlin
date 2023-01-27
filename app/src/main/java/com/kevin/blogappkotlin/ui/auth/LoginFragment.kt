@@ -45,6 +45,7 @@ isUserLoggin()
        /**
         * Si el usuario essta logueado (diferente de nulo) pasar al home Fragment
         * */
+
         firebaseAuth.currentUser?.let {
 
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
