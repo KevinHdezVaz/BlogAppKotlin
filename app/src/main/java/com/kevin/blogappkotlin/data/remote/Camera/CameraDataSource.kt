@@ -19,7 +19,7 @@ class CameraDataSource   {
         val baos = ByteArrayOutputStream()
         imagebitmap.compress(Bitmap.CompressFormat.JPEG,100,baos)
         val downloadURL = imageref.putBytes(baos.toByteArray()).await().storage.downloadUrl.await().toString()
-
+        val posTime = System.currentTimeMillis()
 
 
         user?.let {
@@ -28,6 +28,7 @@ class CameraDataSource   {
                     Posts(
                         profile_name = it1,
                         profile_pictura = it.photoUrl.toString(),
+
                         post_image = downloadURL,
                         post_description = descriotion,
                         uid = it.uid

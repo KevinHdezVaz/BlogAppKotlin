@@ -7,6 +7,8 @@ import com.kevin.blogappkotlin.core.Result
 import com.kevin.blogappkotlin.domain.home.HomeScreenRepo
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import java.lang.Exception
 
 class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
 /*
@@ -23,11 +25,15 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
 
     fun fetchLatestPosts() = liveData (Dispatchers.IO){
         emit(Result.Loading())
-        try{
-            emit(repo.getLatestPost())
-        }catch (e:Exception){
+        kotlin.runCatching {
 
-            emit(Result.Failure(e))
+        repo.getLatestPost()
+        }.onSuccess {
+            it.collect{
+                emit(it)
+            }
+        }.onFailure {
+            emit(com.kevin.blogappkotlin.core.Result.Failure(Exception(it.message)))
         }
     }
 }
