@@ -15,14 +15,16 @@ import com.kevin.blogappkotlin.R
 import com.kevin.blogappkotlin.core.Result
 import com.kevin.blogappkotlin.core.hide
 import com.kevin.blogappkotlin.core.show
+import com.kevin.blogappkotlin.data.model.Posts
 import com.kevin.blogappkotlin.data.remote.home.HomeScreenDataSource
 import com.kevin.blogappkotlin.databinding.FragmentHomeBinding
 import com.kevin.blogappkotlin.domain.home.HomeScreenRepoImplement
 import com.kevin.blogappkotlin.presentation.HomeScreenViewModel
 import com.kevin.blogappkotlin.presentation.HomeScreenViewModelFactory
 import com.kevin.blogappkotlin.ui.main.adapter.HomeScreenAdapter
+import com.kevin.blogappkotlin.ui.main.adapter.onPostClickListener
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), onPostClickListener {
     private lateinit var binding: FragmentHomeBinding
 
     private val CAMERA_REQUEST_CODE = 0
@@ -56,7 +58,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         }else{
                             binding.emptyContainer.hide()
                         }
-                        binding.rvHome.adapter  = HomeScreenAdapter(it.data)
+                        binding.rvHome.adapter  = HomeScreenAdapter(it.data,this)
 
                     }
                     is  Result.Failure ->{
@@ -90,7 +92,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 arrayOf(Manifest.permission.CAMERA),
                 CAMERA_REQUEST_CODE)
         }
-    } 
+    }
+
+    override fun onlikeBtnClick(post: Posts, liked: Boolean) {
+        super.onlikeBtnClick(post, liked)
+
+        viewmodel.registerLikeButtonState(post.id, liked).observe(viewLifecycleOwner){
+            when(it){
+                is  Result.Loading ->{
+                    Toast.makeText(requireContext(),"PROGRESO",Toast.LENGTH_SHORT).show()
+
+                }
+                is  Result.Success ->{
+
+                    Toast.makeText(requireContext(),"CHIDO",Toast.LENGTH_SHORT).show()
+
+
+                }
+                is  Result.Failure ->{
+                    binding.progresBar.visibility = View.GONE
+                    Toast.makeText(requireContext(),"Ocurrio un error ${it.exception}",Toast.LENGTH_SHORT).show()
+
+                }
+            }
+        }
+
+    }
 
 
 }

@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.kevin.blogappkotlin.data.model.Posters
 import com.kevin.blogappkotlin.data.model.Posts
 import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
@@ -26,12 +27,14 @@ class CameraDataSource   {
             FirebaseFirestore.getInstance().collection("post").add(
                 it.displayName?.let { it1 ->
                     Posts(
-                        profile_name = it1,
-                        profile_pictura = it.photoUrl.toString(),
+                        poster = Posters(username =  it1, uid = it.uid, profile_pictura = it.photoUrl.toString()),
+
+
 
                         post_image = downloadURL,
                         post_description = descriotion,
-                        uid = it.uid
+                        likes  = 0,
+
                     )
                 }!!
             )

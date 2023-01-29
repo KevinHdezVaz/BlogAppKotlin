@@ -5,8 +5,10 @@ import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.kevin.blogappkotlin.R
 import com.kevin.blogappkotlin.core.BaseViewHolder
 import com.kevin.blogappkotlin.core.TimeAgo
 import com.kevin.blogappkotlin.data.model.Posts
@@ -14,11 +16,21 @@ import com.kevin.blogappkotlin.databinding.PostItemBinding
 
 
 //Para implementar parte del reyclerView
-class HomeScreenAdapter(private val postlist: List<Posts>): RecyclerView.Adapter<BaseViewHolder<*>>() {
+class HomeScreenAdapter(private val postlist: List<Posts>, private val onPostClickListener: onPostClickListener):
+    RecyclerView.Adapter<BaseViewHolder<*>>() {
+
+
+    private var postClickListener: onPostClickListener?= null
+    init {
+        postClickListener = onPostClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+
 
         val itemBinding = PostItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
     return HomeScreenViewHolder(itemBinding, parent.context)
+
 
     }
 
@@ -41,19 +53,86 @@ class HomeScreenAdapter(private val postlist: List<Posts>): RecyclerView.Adapter
     ): BaseViewHolder<Posts>(binding.root)
     {
         override fun bind(item: Posts) {
-             Glide.with(context).load(item.post_image).centerCrop().into(binding.postImage)
-            Glide.with(context).load(item.profile_pictura).centerCrop().into(binding.profilePicture)
-            binding.profileName.text = item.profile_name
-            val createdAT = item.created_at?.time?.div(1000L)?.let {
+
+
+            setupProfile(item)
+        addPostTimeStamp(item)
+            setupPostProfile(item)
+        setupPostDescription(item)
+            like(item)
+            setupLikeCount(item)
+            setlikeClicAction(item)
+        }
+
+
+        private fun setupProfile(post:Posts)
+        {
+            Glide.with(context).load(post.poster?.profile_pictura).centerCrop().into(binding.profilePicture)
+            binding.profileName.text = post.poster?.username
+        }
+
+        private fun addPostTimeStamp(post: Posts){
+            val createdAT = post.created_at?.time?.div(1000L)?.let {
                 TimeAgo.getTimeAgo(it.toInt())
             }
+
             binding.postTimestamp.text = createdAT
-            if(item.post_description.isEmpty()){
+        }
+
+        private fun setupPostProfile(post:Posts){
+            Glide.with(context).load(post.post_image).centerCrop().into(binding.postImage)
+        }
+
+        private fun setupPostDescription(post:Posts)
+        {
+            if(post.post_description.isEmpty()){
                 binding.postDescription.visibility = View.GONE
             }else{
-                binding.postDescription.text = item.post_description
+                binding.postDescription.text = post.post_description
             }
         }
+
+        private fun like(post: Posts){
+
+            if(!post.liked){
+                binding.btnLike.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_border_24))
+                binding.btnLike.setColorFilter(ContextCompat.getColor(context, R.color.black))
+            }
+            else{
+                binding.btnLike.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24))
+                binding.btnLike.setColorFilter(ContextCompat.getColor(context, R.color.purple_200))
+
+            }
+        }  private fun setupLikeCount(post: Posts) {
+        if( post.likes > 0 ){
+        binding.likeCount.visibility = View.VISIBLE
+            binding.likeCount.text ="${post.likes} likes"
+        }else{
+            binding.likeCount.visibility = View.GONE
+
+        }
+
+    }
+
+        private fun setlikeClicAction(item: Posts) {
+            binding.btnLike.setOnClickListener{
+                if(item.liked) item.apply {
+                    liked = false
+                }else item.apply { liked = true }
+
+                like(item)
+                postClickListener?.onlikeBtnClick(item , item.liked)
+            }
+        }
+    }
+
+
+}
+
+interface onPostClickListener{
+    fun onlikeBtnClick(post: Posts, liked:Boolean){
+
+
 
     }
 }

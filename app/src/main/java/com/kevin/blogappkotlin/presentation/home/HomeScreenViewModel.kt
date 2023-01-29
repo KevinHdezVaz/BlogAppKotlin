@@ -3,11 +3,13 @@ package com.kevin.blogappkotlin.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.kevin.blogappkotlin.core.Result
 import com.kevin.blogappkotlin.domain.home.HomeScreenRepo
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.plus
 import java.lang.Exception
 
 class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
@@ -29,13 +31,29 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
 
         repo.getLatestPost()
         }.onSuccess {
-            it.collect{
+
                 emit(it)
-            }
+
         }.onFailure {
-            emit(com.kevin.blogappkotlin.core.Result.Failure(Exception(it.message)))
+            emit( Result.Failure(Exception(it.message)))
         }
     }
+
+
+    fun registerLikeButtonState(postId: String,  liked:Boolean) = liveData(viewModelScope.coroutineContext +  Dispatchers.IO) {
+        emit(Result.Loading())
+        kotlin.runCatching {
+
+            repo.registerLikeButtonState(postId,liked)
+        }.onSuccess {
+
+            emit(Result.Success(Unit))
+
+        }.onFailure {
+            emit( Result.Failure(Exception(it.message)))
+        }
+    }
+
 }
 
 
