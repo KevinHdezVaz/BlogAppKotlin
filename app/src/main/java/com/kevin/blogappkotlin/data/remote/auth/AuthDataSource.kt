@@ -23,7 +23,9 @@ class AuthDataSource {
    suspend fun signUp(email: String, password: String, username: String): FirebaseUser? {
        val authResult = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password).await()
        authResult.user?.uid?.let {
-           FirebaseFirestore.getInstance().collection("users").document(it).set(User(email,username,"FOTO_URL:PNG")).await()
+           FirebaseFirestore.getInstance().collection("users").document(it).set(User(
+               email,username,
+           )).await()
 
        }
         return authResult.user

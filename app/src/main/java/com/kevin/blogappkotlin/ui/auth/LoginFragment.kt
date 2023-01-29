@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.kevin.blogappkotlin.R
 import com.kevin.blogappkotlin.core.Result
+import com.kevin.blogappkotlin.core.hideKeyboard
 import com.kevin.blogappkotlin.data.remote.auth.AuthDataSource
 import com.kevin.blogappkotlin.databinding.FragmentLoginBinding
 import com.kevin.blogappkotlin.domain.auth.AuthRepoImplements
@@ -57,6 +58,8 @@ isUserLoggin()
             //trim : sirve para que cuando se encuentran espacios adelante o atras, no se
             // tomen en cuenta, solo el texto escrito.
 
+            it.hideKeyboard()
+
             val email = binding.editTextEmail.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()
             validateCredentials(email,password)
@@ -93,6 +96,7 @@ isUserLoggin()
                 is  Result.Success->{
                     binding.progresBar.visibility = View.GONE
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
 
                 }
 
