@@ -1,9 +1,12 @@
 package com.kevin.blogappkotlin.ui.auth
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.MediaController
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -21,7 +24,8 @@ import com.kevin.blogappkotlin.utils.validateRegisterSignUp.Companion.validatePa
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
-
+    var simpleVideoView: VideoView? = null
+    var mediaControls: MediaController? = null
     private lateinit var binding : FragmentRegisterBinding
     private val viewmodel by viewModels<AuthViewModel> {
         LoginScreeViewModelFactory(AuthRepoImplements(AuthDataSource()))
@@ -30,6 +34,33 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding = FragmentRegisterBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
         getSignUp()
+
+
+
+        if (mediaControls == null) {
+            mediaControls = MediaController(context)
+            mediaControls!!.setAnchorView(simpleVideoView)
+        }
+        binding.vvFondo.setOnPreparedListener { mp ->
+            val videoRatio = mp.videoWidth / mp.videoHeight.toFloat()
+            val screenRatio: Float =
+                binding.vvFondo.width / binding.vvFondo.height.toFloat()
+            val scaleX = videoRatio / screenRatio
+            if (scaleX >= 1f) {
+                binding.vvFondo.scaleX = scaleX
+            } else {
+                binding.vvFondo.scaleY = 1f / screenRatio
+            }
+        }
+
+        binding.vvFondo.setVideoURI(Uri.parse("android.resource://" + "com.kevin.blogappkotlin" + "/" + R.raw.videonfoo))
+        binding.vvFondo.start()
+        binding.vvFondo.setOnCompletionListener { binding.vvFondo.start() }
+        binding.vvFondo.setOnErrorListener { _, _, _ ->
+            false
+        }
+
+
     }
 
      fun getSignUp(){
