@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/favorite/baseline_favorite_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/arrow_left/baseline_arrow_left_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="41a1c2" />
-                            <entry key="outputName" value="ic_baseline_favorite_24" />
+                            <entry key="outputName" value="ic_baseline_arrow_left_24" />
                           </map>
                         </option>
                       </PersistentState>

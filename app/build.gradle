@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.kevin.blogappkotlin'
+    namespace 'com.kevin.courseApp'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.kevin.blogappkotlin"
+        applicationId "com.kevin.courseApp"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -84,6 +84,10 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:1.0.0-alpha02"
 
 
+//lottie
+    implementation "com.airbnb.android:lottie:4.1.0"
     //corrutinas
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+
+   implementation 'com.google.android.gms:play-services-auth:18.1.0'
 }

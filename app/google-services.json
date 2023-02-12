@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "427835467924",
-    "project_id": "blogappkotlin-dd28d",
-    "storage_bucket": "blogappkotlin-dd28d.appspot.com"
+    "project_number": "106392319602",
+    "firebase_url": "https://cursoapp-36629-default-rtdb.firebaseio.com",
+    "project_id": "cursoapp-36629",
+    "storage_bucket": "cursoapp-36629.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:427835467924:android:23b7bd80d5373d75492c81",
+        "mobilesdk_app_id": "1:106392319602:android:108de16d3ce84bc73cb4eb",
         "android_client_info": {
-          "package_name": "com.kevin.blogappkotlin"
+          "package_name": "com.kevin.courseApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "427835467924-2eu3bav2893lh7kuhgrfiu8cre7otbrj.apps.googleusercontent.com",
+          "client_id": "106392319602-0g97d1gnk7knt8ciege8p022kee8r6m2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kevin.courseApp",
+            "certificate_hash": "be14a2786365de198174c8c360464357487df115"
+          }
+        },
+        {
+          "client_id": "106392319602-956qok154u0itokd87je3ui5qrbisak0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC-JTi4fNyaLC_h7HkCAl6HcrbUcLwBtoQ"
+          "current_key": "AIzaSyBgPvDeoiEzmbLiGQ69my2PykX3U7keEEc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "427835467924-2eu3bav2893lh7kuhgrfiu8cre7otbrj.apps.googleusercontent.com",
+              "client_id": "106392319602-4aucddjn7lkgn859hfvg2fa559vbv2gb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

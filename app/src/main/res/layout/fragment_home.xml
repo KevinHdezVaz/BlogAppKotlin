@@ -3,45 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.HomeFragment">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:id="@+id/progres_bar"
-        android:layout_height="match_parent"
-        >
-
-<ProgressBar
-    android:layout_width="wrap_content"
-    android:layout_centerInParent="true"
-    android:layout_height="wrap_content">
 
 
-</ProgressBar>
-
-    </RelativeLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:id="@+id/empty_container"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="20dp"
-            android:layout_margin="40dp"
-            android:text="Aun no se creo ningun post, crea el tuyo ahora mismo!!"
-            android:layout_centerInParent="true"
-            ></TextView>
-
-    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -52,5 +23,7 @@
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
 
 </LinearLayout>

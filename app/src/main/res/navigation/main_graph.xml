@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.kevin.blogappkotlin.ui.main.HomeFragment"
+        android:name="com.kevin.courseApp.ui.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.kevin.blogappkotlin.ui.auth.LoginFragment"
+        android:name="com.kevin.courseApp.ui.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -29,29 +29,19 @@
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
-        <action
-            android:id="@+id/action_loginFragment_to_setupProfileFragment"
-            app:destination="@id/setupProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.kevin.blogappkotlin.ui.auth.RegisterFragment"
+        android:name="com.kevin.courseApp.ui.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_registerFragment_to_setupProfileFragment"
-            app:destination="@id/setupProfileFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="com.kevin.blogappkotlin.ui.camera.CameraFragment"
+        android:name="com.kevin.courseApp.ui.camera.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" >
         <action
@@ -60,20 +50,11 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.kevin.blogappkotlin.ui.profile.ProfileFragment"
+        android:name="com.kevin.courseApp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/setupProfileFragment"
-        android:name="com.kevin.blogappkotlin.ui.auth.SetupProfileFragment"
-        android:label="fragment_setup_profile"
-        tools:layout="@layout/fragment_setup_profile" >
-        <action
-            android:id="@+id/action_setupProfileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
