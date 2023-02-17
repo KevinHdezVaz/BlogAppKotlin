@@ -1,4 +1,4 @@
-package com.kevin.courseApp.ui.category
+package com.kevin.courseApp.ui.cursoDetalle
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

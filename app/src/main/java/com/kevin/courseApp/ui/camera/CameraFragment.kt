@@ -58,7 +58,6 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
                         }
                         is com.kevin.courseApp.core.Result.Success -> {
                             Toast.makeText(requireContext(), "Subiendo foto", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_cameraFragment_to_homeFragment)
 
                         }
                         is com.kevin.courseApp.core.Result.Failure -> {

@@ -40,15 +40,6 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/cameraFragment"
-        android:name="com.kevin.courseApp.ui.camera.CameraFragment"
-        android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera" >
-        <action
-            android:id="@+id/action_cameraFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.kevin.courseApp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
@@ -57,4 +48,6 @@
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
+
 </navigation>

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.kevin.courseApp.R
@@ -21,6 +22,7 @@ import com.kevin.courseApp.core.hide
 import com.kevin.courseApp.core.show
 import com.kevin.courseApp.data.model.Cursos
 import com.kevin.courseApp.data.model.Posts
+
 import com.kevin.courseApp.data.remote.home.HomeScreenDataSource
 import com.kevin.courseApp.databinding.FragmentHomeBinding
 import com.kevin.courseApp.domain.home.HomeScreenRepoImplement
@@ -91,6 +93,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), onPostClickListener {
                     startActivity(intent)
                 }
             })
+
+
 
         }
 
