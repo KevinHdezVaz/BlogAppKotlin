@@ -29,13 +29,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="category">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1434" />
+                            <option name="y" value="-50" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="homeFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1132" />
-                            <option name="y" value="201" />
+                            <option name="x" value="1197" />
+                            <option name="y" value="245" />
                           </Point>
                         </option>
                       </LayoutPositions>

@@ -21,35 +21,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        binding.bottomNavigation.setupWithNavController(navController)
-        observeDestinationChange()
+
 
 
 
     }
 
-    private fun observeDestinationChange() {
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            when(destination.id) {
-                R.id.loginFragment -> {
-                    binding.bottomNavigation.hide()
-                }
-
-                R.id.registerFragment -> {
-                    binding.bottomNavigation.hide()
-                }
-
-                R.id.profileFragment -> {
-                    binding.bottomNavigation.show()
-                }
-
-
-                else -> {
-                    binding.bottomNavigation.show()
-                }
-            }
-        }
-    }
 
 
 }
