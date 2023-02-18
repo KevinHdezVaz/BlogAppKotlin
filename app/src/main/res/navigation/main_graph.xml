@@ -48,6 +48,11 @@
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/categoriasFragment"
+        android:name="com.kevin.courseApp.ui.cursoDetalle.CategoriasFragment"
+        android:label="fragment_categorias"
+        tools:layout="@layout/fragment_categorias" />
 
 
 </navigation>

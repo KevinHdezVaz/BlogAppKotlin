@@ -17,5 +17,16 @@
 
         app:navGraph="@navigation/main_graph" />
 
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+
+
+        app:backgroundColor="@color/colorPrimary"
+        app:textSize="20dp"
+        app:iconSize="20dp"
+        app:menu="@menu/menu_botom"/>
 
 </RelativeLayout>

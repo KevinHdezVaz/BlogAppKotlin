@@ -92,6 +92,7 @@ dependencies {
 
    implementation 'com.google.android.gms:play-services-auth:18.1.0'
 
-
+//navbar
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 
 }

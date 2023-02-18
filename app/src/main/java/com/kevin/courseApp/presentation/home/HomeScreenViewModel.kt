@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.kevin.courseApp.core.Result
-import com.kevin.courseApp.domain.home.HomeScreenRepo
+import com.kevin.courseApp.domain.home.CursosRepo
 
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 
-class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
+class HomeScreenViewModel(private val repo: CursosRepo): ViewModel() {
 /*
 * OJO: A UN VIEWMODEL NO SE LE PUEDE AGREGAR UN CONSTRUCTOR, NI PASAR DATOS EN PARAMETRO
 *
@@ -23,15 +23,14 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
 
     //EN ESTA PARTE YA ESTA TODE LISTO PARA IR A BUSCAR LA INFORMACION AL SERVIDOR
 
-    fun fetchLatestPosts() = liveData (Dispatchers.IO){
-        emit(Result.Loading())
+    fun getCursos() = liveData (Dispatchers.IO){
+       // emit(Result.Loading())
+
         kotlin.runCatching {
 
-        repo.getLatestPost()
+        repo.getCursosAllRepo()
         }.onSuccess {
-
-
-                emit(it)
+             emit(it)
 
         }.onFailure {
             emit( Result.Failure(Exception(it.message)))
@@ -39,19 +38,7 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
     }
 
 
-    fun registerLikeButtonState(postId: String,  liked:Boolean) = liveData(viewModelScope.coroutineContext +  Dispatchers.IO) {
-        emit(Result.Loading())
-        kotlin.runCatching {
 
-            repo.registerLikeButtonState(postId,liked)
-        }.onSuccess {
-
-            emit(Result.Success(Unit))
-
-        }.onFailure {
-            emit( Result.Failure(Exception(it.message)))
-        }
-    }
 
 }
 
@@ -59,8 +46,8 @@ class HomeScreenViewModel(private val repo: HomeScreenRepo): ViewModel() {
 //aqui puede dar errores por la version de Factory
 
 
-class HomeScreenViewModelFactory(private val repo: HomeScreenRepo) : ViewModelProvider.Factory {
+class HomeScreenViewModelFactory(private val repo: CursosRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(HomeScreenRepo::class.java).newInstance(repo)
+        return modelClass.getConstructor(CursosRepo::class.java).newInstance(repo)
     }
 }

@@ -31,6 +31,7 @@ import com.kevin.courseApp.databinding.FragmentLoginBinding
 import com.kevin.courseApp.domain.auth.AuthRepoImplements
 import com.kevin.courseApp.presentation.auth.AuthViewModel
 import com.kevin.courseApp.presentation.auth.LoginScreeViewModelFactory
+import com.kevin.courseApp.ui.main.HomeFragment
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -208,19 +209,23 @@ isUserLoggin()
         viewmodel.SignIn(email,password).observe(viewLifecycleOwner, Observer {
             when(it){
                 is  Result.Loading ->{
-                    binding.progresBar.visibility = View.VISIBLE
+
+                    HomeFragment.mostrarCarga(requireContext())
+
                     binding.btnSignin.isEnabled = false
                 }
 
                 is  Result.Success->{
-                    binding.progresBar.visibility = View.GONE
+
+                    HomeFragment.esconderCarga()
+
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
 
                 }
 
                 is  Result.Failure ->{
-                    binding.progresBar.visibility = View.GONE
+                    HomeFragment.esconderCarga()
                     binding.btnSignin.isEnabled = true
                     Toast.makeText(requireContext(), "Error ${it.exception}", Toast.LENGTH_SHORT).show()
 

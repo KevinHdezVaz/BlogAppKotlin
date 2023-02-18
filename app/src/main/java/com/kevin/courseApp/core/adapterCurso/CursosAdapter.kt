@@ -46,7 +46,9 @@ class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapt
         fun bind(curso: Cursos) {
             binding.tituloTextView.text = curso.titulo
             binding.descripcionTextView.text = curso.descripcion
+            binding.categoriaCurso.text = curso.categoria
             Glide.with(itemView.context).load(curso.imagenUrl).into(binding.imagenImageView)
+
 
             // Agregar el oyente de clics al elemento del RecyclerView
             binding.root.setOnClickListener {

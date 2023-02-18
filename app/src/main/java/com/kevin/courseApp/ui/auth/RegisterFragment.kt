@@ -15,6 +15,7 @@ import com.kevin.courseApp.databinding.FragmentRegisterBinding
 import com.kevin.courseApp.domain.auth.AuthRepoImplements
 import com.kevin.courseApp.presentation.auth.AuthViewModel
 import com.kevin.courseApp.presentation.auth.LoginScreeViewModelFactory
+import com.kevin.courseApp.ui.main.HomeFragment
 import com.kevin.courseApp.utils.validateRegisterSignUp.Companion.validateEmail
 import com.kevin.courseApp.utils.validateRegisterSignUp.Companion.validateForm
 import com.kevin.courseApp.utils.validateRegisterSignUp.Companion.validatePassword
@@ -78,17 +79,17 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 when(it){
                     is  Result.Loading ->{
 
-                        binding.progresBar.visibility = View.VISIBLE
+                        HomeFragment.mostrarCarga(requireContext())
                         binding.btnSignUp.isEnabled= false
                     }
                     is  Result.Success ->{
-                        binding.progresBar.visibility = View.GONE
+                        HomeFragment.esconderCarga()
                         findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
 
 
                     }
                     is  Result.Failure ->{
-                        binding.progresBar.visibility = View.GONE
+                        HomeFragment.esconderCarga()
                         Toast.makeText(requireContext(),"Ocurrio un error ${it.exception}",Toast.LENGTH_SHORT).show()
                         binding.btnSignUp.isEnabled= true
                     }

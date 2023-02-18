@@ -8,13 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="cursoDetallesFragment">
+                  <entry key="categoriasFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1132" />
-                            <option name="y" value="65" />
+                            <option name="x" value="1284" />
+                            <option name="y" value="-109" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -28,15 +28,6 @@
                             <option name="x" value="852" />
                             <option name="y" value="65" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_homeFragment_to_cursoDetallesFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
