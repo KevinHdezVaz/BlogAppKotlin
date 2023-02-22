@@ -1,5 +1,6 @@
 package com.kevin.courseApp.data.model
 
+import java.io.Serializable
 
 
 data class Cursos(
@@ -7,5 +8,8 @@ data class Cursos(
     val descripcion: String = "",
     val imagenUrl: String = "",
     val enlace: String = "",
-    val categoria: String = ""
+    val categoria: String = "",
+    val empresa: String = "",
+    val imagenFondo: String=""
 )
+    : Serializable

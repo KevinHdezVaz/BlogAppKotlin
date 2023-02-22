@@ -40,19 +40,23 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.kevin.courseApp.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        android:id="@+id/buscarFragment"
+        android:name="com.kevin.courseApp.ui.main.buscar.BuscarFragment"
+        android:label="fragment_buscar"
+        tools:layout="@layout/fragment_buscar" />
+    <fragment
+        android:id="@+id/categoriasFragment3"
+        android:name="com.kevin.courseApp.ui.categoriaCursos.CategoriasFragment"
+        android:label="CategoriasFragment" >
         <action
-            android:id="@+id/action_profileFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_categoriasFragment3_to_cursosFragment"
+            app:destination="@id/cursosFragment" />
     </fragment>
     <fragment
-        android:id="@+id/categoriasFragment"
-        android:name="com.kevin.courseApp.ui.cursoDetalle.CategoriasFragment"
-        android:label="fragment_categorias"
-        tools:layout="@layout/fragment_categorias" />
+        android:id="@+id/cursosFragment"
+        android:name="com.kevin.courseApp.ui.categoriaCursos.CursosFragment"
+        android:label="fragment_cursos"
+        tools:layout="@layout/fragment_cursos" />
 
 
 </navigation>

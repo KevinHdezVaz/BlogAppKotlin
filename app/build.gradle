@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+
 }
 
 android {
@@ -14,7 +15,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
 
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -39,8 +40,8 @@ android {
 }
 
 dependencies {
-
-    
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
@@ -71,6 +72,8 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    //room
+    implementation "androidx.room:room-runtime:2.4.0"
 
 
     // ViewModel
@@ -80,10 +83,13 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
+    implementation "androidx.gridlayout:gridlayout:1.0.0"
     //picasoo
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //carousel
 
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
 //lottie
     implementation "com.airbnb.android:lottie:4.1.0"
@@ -94,5 +100,7 @@ dependencies {
 
 //navbar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
+
+
 
 }

@@ -3,7 +3,6 @@ package com.kevin.courseApp.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import com.kevin.courseApp.core.Result
 import com.kevin.courseApp.domain.home.CursosRepo
 
@@ -24,10 +23,8 @@ class HomeScreenViewModel(private val repo: CursosRepo): ViewModel() {
     //EN ESTA PARTE YA ESTA TODE LISTO PARA IR A BUSCAR LA INFORMACION AL SERVIDOR
 
     fun getCursos() = liveData (Dispatchers.IO){
-       // emit(Result.Loading())
-
+        emit(Result.Loading())
         kotlin.runCatching {
-
         repo.getCursosAllRepo()
         }.onSuccess {
              emit(it)
@@ -36,12 +33,7 @@ class HomeScreenViewModel(private val repo: CursosRepo): ViewModel() {
             emit( Result.Failure(Exception(it.message)))
         }
     }
-
-
-
-
 }
-
 
 //aqui puede dar errores por la version de Factory
 
