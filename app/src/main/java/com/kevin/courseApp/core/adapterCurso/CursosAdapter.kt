@@ -15,6 +15,7 @@ import com.kevin.courseApp.databinding.ItemCursoBinding
 import com.squareup.picasso.Picasso
 class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapter.CursoViewHolder>() {
 
+
     private var listener: OnItemClickListener? = null
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -56,6 +57,7 @@ class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapt
             Glide.with(itemView.context).load(curso.imagenUrl).into(binding.imagenImageView)
             Glide.with(itemView.context).load(curso.imagenFondo).into(binding.fondoo)
 
+            if(!curso.certificado) binding.imagenArriba.visibility = View.GONE
 
 
             // Agregar el oyente de clics al elemento del RecyclerView

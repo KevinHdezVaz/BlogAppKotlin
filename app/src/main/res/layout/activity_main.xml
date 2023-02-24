@@ -17,16 +17,34 @@
 
         app:navGraph="@navigation/main_graph" />
 
-    <me.ibrahimsn.lib.SmoothBottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
 
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="30dp"
+            android:layout_height="wrap_content"
+            >
 
-        app:backgroundColor="@color/colorPrimary"
-        app:textSize="20dp"
-        app:iconSize="20dp"
-        app:menu="@menu/menu_botom"/>
+            <me.ibrahimsn.lib.SmoothBottomBar
+                android:id="@+id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+
+                app:backgroundColor="@color/colorPrimary"
+                app:textSize="20dp"
+                app:iconSize="20dp"
+                app:menu="@menu/menu_botom"/>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

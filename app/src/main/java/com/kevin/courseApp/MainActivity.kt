@@ -1,5 +1,12 @@
 package com.kevin.courseApp
 
+import android.app.AlarmManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.widget.PopupMenu
@@ -10,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.kevin.courseApp.core.hide
 import com.kevin.courseApp.core.show
 import com.kevin.courseApp.databinding.ActivityMainBinding
+import com.kevin.courseApp.utils.NotificacionReceiver
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,9 +36,38 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         setupSmoothBottomMenu()
         observeDestinationChange()
+        notificacion1Semana()
+
 
 
     }
+
+    private fun notificacion1Semana() {
+
+
+        val sharedPreferences = this.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putLong("last_used", System.currentTimeMillis())
+        editor.apply()
+
+        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, NotificacionReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+
+        val lastUsed = sharedPreferences.getLong("last_used", 0)
+        val nextAlarm = lastUsed + (7 * 24 * 60 * 60 * 1000) // Sumar una semana en milisegundos
+        alarmManager.set(AlarmManager.RTC_WAKEUP, nextAlarm, pendingIntent)
+
+
+
+//habilita el canal
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("default_channel", "Canal predeterminado", NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
     private fun setupSmoothBottomMenu() {
         val popupmenu = PopupMenu(this, null)
         popupmenu.inflate(R.menu.menu_botom)

@@ -2,12 +2,14 @@ package com.kevin.courseApp.ui.main.buscar
 
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import com.kevin.courseApp.databinding.FragmentBuscarBinding
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -27,6 +29,7 @@ import com.kevin.courseApp.presentation.HomeScreenViewModel
 import com.kevin.courseApp.presentation.HomeScreenViewModelFactory
 import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
 import com.kevin.courseApp.ui.main.HomeFragment
+import com.kevin.courseApp.utils.animacionProgress
 
 class BuscarFragment : Fragment(R.layout.fragment_buscar) {
 
@@ -63,6 +66,12 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
             HomeScreenViewModelFactory(CursosImplement(CursosDataSource()))
         )[HomeScreenViewModel::class.java]
 
+        binding.searchView.postDelayed({
+            binding.searchView.isIconified = false
+            binding.searchView.requestFocus()
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(binding.searchView, InputMethodManager.SHOW_IMPLICIT)
+        }, 200)
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -87,12 +96,12 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
                     val cursos = result.data
                     cursosAdapter.cursos = cursos
                     cursosAdapter.notifyDataSetChanged()
-                    HomeFragment.esconderCarga()
+                    animacionProgress.esconderCarga()
+
 
                 }
                 is Result.Failure -> {
-                    HomeFragment.esconderCarga()
-
+                    animacionProgress.esconderCarga()
                     Log.e("TAG", "Error al obtener cursos", result.exception)
                 }
                 else -> {}
@@ -110,8 +119,9 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
                 startActivity(intent)
             }
         })
+        animacionProgress.mostrarCarga(requireContext() )
+        //HomeFragment.mostrarCarga(requireContext(), "loading.json")
 
-        HomeFragment.mostrarCarga(requireContext())
     }
 
 

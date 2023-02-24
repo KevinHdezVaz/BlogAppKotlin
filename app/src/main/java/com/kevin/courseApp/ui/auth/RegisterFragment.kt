@@ -79,17 +79,17 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 when(it){
                     is  Result.Loading ->{
 
-                        HomeFragment.mostrarCarga(requireContext())
+                        //   HomeFragment.mostrarCarga(requireContext(), "loading.json")
                         binding.btnSignUp.isEnabled= false
                     }
                     is  Result.Success ->{
-                        HomeFragment.esconderCarga()
+                        //    HomeFragment.esconderCarga()
                         findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
 
 
                     }
                     is  Result.Failure ->{
-                        HomeFragment.esconderCarga()
+                        //      HomeFragment.esconderCarga()
                         Toast.makeText(requireContext(),"Ocurrio un error ${it.exception}",Toast.LENGTH_SHORT).show()
                         binding.btnSignUp.isEnabled= true
                     }

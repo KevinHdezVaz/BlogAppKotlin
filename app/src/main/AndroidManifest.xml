@@ -50,6 +50,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <receiver android:name=".utils.NotificacionReceiver" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5486388630970825~4548553821"/>
     </application>
 
 </manifest>

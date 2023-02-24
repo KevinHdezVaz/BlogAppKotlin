@@ -210,14 +210,15 @@ isUserLoggin()
             when(it){
                 is  Result.Loading ->{
 
-                    HomeFragment.mostrarCarga(requireContext())
+                    //   HomeFragment.mostrarCarga(requireContext(), "loading.json")
+
 
                     binding.btnSignin.isEnabled = false
                 }
 
                 is  Result.Success->{
 
-                    HomeFragment.esconderCarga()
+                    //        HomeFragment.esconderCarga()
 
                     findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
@@ -225,7 +226,7 @@ isUserLoggin()
                 }
 
                 is  Result.Failure ->{
-                    HomeFragment.esconderCarga()
+                    // HomeFragment.esconderCarga()
                     binding.btnSignin.isEnabled = true
                     Toast.makeText(requireContext(), "Error ${it.exception}", Toast.LENGTH_SHORT).show()
 

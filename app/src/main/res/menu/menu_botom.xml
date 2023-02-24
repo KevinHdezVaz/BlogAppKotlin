@@ -7,12 +7,6 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"/>
 
-    <item
-        android:id="@+id/categoriasFragment3"
-        android:title="Categorias"
-        android:enabled="true"
-        android:icon="@drawable/aplicacion"/>
-
 
     <item
         android:id="@+id/buscarFragment"

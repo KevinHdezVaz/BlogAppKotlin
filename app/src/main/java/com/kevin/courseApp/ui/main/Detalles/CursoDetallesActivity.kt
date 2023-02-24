@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.kevin.courseApp.R
 import com.kevin.courseApp.data.model.Cursos
 import com.kevin.courseApp.databinding.ActivityCursoDetallesBinding
+import com.kevin.courseApp.ui.main.HomeFragment
 
 class CursoDetallesActivity : AppCompatActivity() {
 

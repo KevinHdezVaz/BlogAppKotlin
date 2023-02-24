@@ -15,23 +15,8 @@ import com.kevin.courseApp.presentation.home.CategoriasViewModel
 
 class CategoriasFragment : Fragment() {
 
-    private lateinit var binding: FragmentCategorias2Binding
-    private lateinit var viewModel: CategoriasViewModel
-    private lateinit var categoriasAdapter: CategoriasAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentCategorias2Binding.inflate(inflater, container, false)
-
-        viewModel = ViewModelProvider(this).get(CategoriasViewModel::class.java)
-
-        binding.gridViewCategorias.apply {
-             adapter = categoriasAdapter
-        }
-
-        viewModel.categorias.observe(viewLifecycleOwner) { categorias ->
-             categoriasAdapter.notifyDataSetChanged()
-        }
-
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }

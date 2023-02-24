@@ -8,7 +8,7 @@
     android:layout_gravity="center">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/Animacion"
+                android:id="@+id/animacionn"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:scaleType="centerCrop"

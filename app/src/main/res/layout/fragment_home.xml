@@ -1,41 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-<androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
-    app:cardCornerRadius="30dp"
-    android:id="@+id/slider2"
-    android:layout_height="wrap_content"
-        >
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            app:iss_auto_cycle="true"
-            app:iss_delay="0"
-            app:iss_period="2000"
-            app:iss_placeholder="@drawable/placeholder" />
+    android:layout_height="match_parent">
 
-</androidx.cardview.widget.CardView>
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_cursos"
+        <!-- Contenido principal de tu fragment -->
+        <RelativeLayout
             android:layout_width="match_parent"
 
+            android:layout_height="match_parent">
 
+
+
+                        <androidx.appcompat.widget.Toolbar
+                            android:layout_width="match_parent"
+                            android:id="@+id/toolbar"
+                            app:title="Home"
+                            android:layout_height="?actionBarSize"
+                            android:background="@color/colorPrimaryDark" />
+
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/slider2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar"
+                    app:cardCornerRadius="30dp">
+
+                        <com.denzcoskun.imageslider.ImageSlider
+                            android:id="@+id/image_slider"
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            app:iss_auto_cycle="true"
+                            app:iss_delay="0"
+                            app:iss_period="2000"
+                            app:iss_placeholder="@drawable/placeholder" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_cursos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/slider2"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="50dp"
+                    android:padding="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/nav_menu" />
 
-            android:layout_below="@id/slider2"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="70dp"
-            android:padding="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
