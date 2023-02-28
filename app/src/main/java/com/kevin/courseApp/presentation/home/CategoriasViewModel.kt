@@ -32,8 +32,7 @@ class CategoriasViewModel : ViewModel() {
                     }
                 }
 
-                val categoriasList = categoriasSet.map { Categoria(it) }
-                _categorias.value = categoriasList
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

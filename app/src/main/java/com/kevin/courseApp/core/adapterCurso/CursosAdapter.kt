@@ -15,6 +15,8 @@ import com.kevin.courseApp.databinding.ItemCursoBinding
 import com.squareup.picasso.Picasso
 class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapter.CursoViewHolder>() {
 
+    private val ITEM_VIEW_TYPE_COURSE = 0
+    private val ITEM_VIEW_TYPE_AD = 1
 
     private var listener: OnItemClickListener? = null
 
@@ -27,14 +29,17 @@ class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapt
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CursoViewHolder {
+ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CursoViewHolder {
         val binding = ItemCursoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CursoViewHolder(binding)
     }
 
+
+
+
     override fun onBindViewHolder(holder: CursoViewHolder, position: Int) {
-        val curso = cursos[position]
-        holder.bind(curso)
+         val curso = cursos[position]
+         holder.bind(curso)
 
 
         holder.itemView.setOnClickListener {
@@ -42,6 +47,17 @@ class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapt
         }
     }
 
+
+
+
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position % 5 == 0) {
+            ITEM_VIEW_TYPE_AD
+        } else {
+            ITEM_VIEW_TYPE_COURSE
+        }
+    }
 
     override fun getItemCount(): Int {
         return cursos.size

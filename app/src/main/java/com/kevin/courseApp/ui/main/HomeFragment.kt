@@ -11,13 +11,22 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.Result
@@ -36,12 +45,18 @@ import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var cursosAdapter: CursosAdapter
+
     private lateinit var viewModel: HomeScreenViewModel
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+
+
+
+
+        nombreCorreoNav()
 
         cursosAdapter = CursosAdapter(listOf())
         binding.recyclerViewCursos.apply {
@@ -98,6 +113,38 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
 
+    private fun nombreCorreoNav() {
+        // Obtener la referencia al NavHeader
+        val navHeader = binding.navigationView.getHeaderView(0)
+
+// Obtener la referencia al usuario actual de Firebase Auth
+        val user = FirebaseAuth.getInstance().currentUser
+
+// Obtener la referencia a las vistas del NavHeader
+        // Obtener la información de la cuenta de Google del usuario autenticado
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
+        if (account != null) {
+            // Obtener la imagen de perfil de Google
+            val photoUrl = account.photoUrl
+            if (photoUrl != null) {
+                // Cargar la imagen en la ImageView utilizando Glide
+                Glide.with(this)
+                    .load(photoUrl)
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .into(navHeader.findViewById(R.id.imagenHeader))
+            }
+        }
+
+
+        val nombreUsuario = navHeader.findViewById<TextView>(R.id.nombre_usuario)
+        val correoUsuario = navHeader.findViewById<TextView>(R.id.correo_usuario)
+
+// Asignar el nombre y correo del usuario a las vistas correspondientes en el NavHeader
+        nombreUsuario.text = user?.displayName
+        correoUsuario.text = user?.email
+
+    }
+
     private fun hamburgesa() {
 
 
@@ -111,6 +158,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
                 R.id.menu_item_2 -> {
                     // Lógica para la selección del segundo elemento del menú
+                    true
+                }
+                R.id.menu_salir -> {
+                    FirebaseAuth.getInstance().signOut()
+                    findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
                     true
                 }
                 // Agrega más elementos del menú si es necesario

@@ -12,6 +12,11 @@
             android:icon="@drawable/find"
             android:title="Configuración" />
 
+        <item
+            android:id="@+id/menu_salir"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="Salir" />
+
     </group>
 
 </menu>

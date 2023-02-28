@@ -46,6 +46,8 @@ class WebViewCurso : AppCompatActivity() {
         }
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.loadUrl(enlace!!)
+        binding.webview.settings.mixedContentMode
+
 
 
         val toolbar = binding.toolbar

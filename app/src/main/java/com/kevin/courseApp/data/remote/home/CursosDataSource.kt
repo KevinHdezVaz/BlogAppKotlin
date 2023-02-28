@@ -17,7 +17,9 @@ class CursosDataSource {
             val dataSnapshot = FirebaseDatabase.getInstance().reference.child("cursos").get().await()
             for (postSnapshot in dataSnapshot.children) {
                 val curso = postSnapshot.getValue(Cursos::class.java)
+
                 curso?.let { postList.add(it) }
+              //  postList.sortBy { it.titulo }
             }
             return Result.Success(postList)
         } catch (e: Exception) {

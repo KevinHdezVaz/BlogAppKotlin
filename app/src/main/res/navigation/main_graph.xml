@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.kevin.courseApp.ui.main.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.kevin.courseApp.ui.auth.LoginFragment"
@@ -45,18 +49,14 @@
         android:label="fragment_buscar"
         tools:layout="@layout/fragment_buscar" />
     <fragment
-        android:id="@+id/categoriasFragment3"
-        android:name="com.kevin.courseApp.ui.categoriaCursos.CategoriasFragment"
-        android:label="CategoriasFragment" >
-        <action
-            android:id="@+id/action_categoriasFragment3_to_cursosFragment"
-            app:destination="@id/cursosFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/cursosFragment"
         android:name="com.kevin.courseApp.ui.categoriaCursos.CursosFragment"
         android:label="fragment_cursos"
         tools:layout="@layout/fragment_cursos" />
+    <fragment
+        android:id="@+id/categoriasFragment"
+        android:name="com.kevin.courseApp.ui.categoriaCursos.CategoriasFragment"
+        android:label="CategoriasFragment" />
 
 
 </navigation>
