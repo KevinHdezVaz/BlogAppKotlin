@@ -19,7 +19,7 @@ class CursosDataSource {
                 val curso = postSnapshot.getValue(Cursos::class.java)
 
                 curso?.let { postList.add(it) }
-              //  postList.sortBy { it.titulo }
+               postList.sortBy { it.titulo }
             }
             return Result.Success(postList)
         } catch (e: Exception) {

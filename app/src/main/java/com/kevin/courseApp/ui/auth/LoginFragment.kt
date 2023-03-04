@@ -73,7 +73,7 @@ isUserLoggin()
 
         binding.btnGoogle.setOnClickListener{
             signInGoogle()
-            Toast.makeText(requireContext(),"THIS",Toast.LENGTH_SHORT).show()
+
         }
 
 

@@ -1,10 +1,24 @@
 <resources>
-    <string name="app_name">BlogAppKotlin</string>
+    <string name="app_name">SaberApp</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 
     <string name="anuncioRecyclerviewPrueba">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="title_onboarding_1">CREA UN HABITO</string>
+    <string name="description_onboarding_1">
+        El aprendizaje es un proceso continuo, siempre hay algo nuevo que descubrir y aprender. \n¡No dejes de lado la oportunidad de seguir creciendo!
+    </string>
+
+    <string name="title_onboarding_2">EXPLORA NUEVAS HABILIDADES.</string>
+    <string name="description_onboarding_2">
+    Diversas cursos y diplomados para diversas ciencias, todas las ramas de la educación en una misma app.
+    </string>
+
+    <string name="title_onboarding_3">¡AYUDA A TU YO DEL FUTURO! </string>
+    <string name="description_onboarding_3">El éxito no llega de la noche a la mañana. \nEs el resultado del trabajo duro, la dedicación y la perseverancia</string>
+
+    <string name="start_text_advice">By continuing on this application you agree to our Terms of Use and Privacy Policy</string>
 
 
 </resources>

@@ -102,10 +102,16 @@ dependencies {
 //navbar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 //admob
-    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+    implementation 'com.google.android.gms:play-services-ads:20.5.0'
 
+    implementation 'com.merhold.extensiblepageindicator:extensiblepageindicator:1.0.1'
+    //custom library
+    implementation 'com.romandanylyk:pageindicatorview:1.0.2@aar'
+//particles
+    implementation 'com.github.ibrahimsn98:android-particles:2.0'
 
-
+    //konfeti
+    implementation 'nl.dionsegijn:konfetti-xml:2.0.2'
 
 
 }

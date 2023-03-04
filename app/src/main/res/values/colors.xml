@@ -4,9 +4,15 @@
     <color name="colorPrimary">#2196f3</color>
     <color name="colorPrimaryDark">#3089CF</color>
     <color name="colorAccent">#3089CF</color>
-
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="colorTRes">#67ABE1</color>
+    <color name="teal_200">#009688</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="md_grey_600">#757575</color>
+    <color name="md_white_1000">#ffffff</color>
+    <color name="md_black_1000">#000000</color>
+    <color name="md_grey_100">#F5F5F5</color>
+    <color name="md_blue_100">#BBDEFB</color>
+
     <color name="white">#FFFFFFFF</color>
 </resources>

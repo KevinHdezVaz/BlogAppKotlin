@@ -13,6 +13,17 @@
             android:layout_height="match_parent">
 
 
+                <me.ibrahimsn.particle.ParticleView
+                    android:id="@+id/particleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:particleCount="40"
+                    app:particleMinRadius="3"
+                    app:particleMaxRadius="10"
+app:particleLinesEnabled="false"
+                    app:particlesBackgroundColor="@color/white"
+                    app:particleColor="@color/teal_700"
+                    />
 
                         <androidx.appcompat.widget.Toolbar
                             android:layout_width="match_parent"
@@ -37,9 +48,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="170dp"
                             app:iss_auto_cycle="true"
+
                             app:iss_delay="0"
                             app:iss_period="2000"
-                            app:iss_placeholder="@drawable/placeholder" />
+                            app:iss_placeholder="@mipmap/ic_launcher" />
 
                 </androidx.cardview.widget.CardView>
 

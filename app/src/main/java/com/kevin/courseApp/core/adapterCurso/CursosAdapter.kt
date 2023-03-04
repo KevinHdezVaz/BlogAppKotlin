@@ -73,7 +73,6 @@ class CursosAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapt
             Glide.with(itemView.context).load(curso.imagenUrl).into(binding.imagenImageView)
             Glide.with(itemView.context).load(curso.imagenFondo).into(binding.fondoo)
 
-            if(!curso.certificado) binding.imagenArriba.visibility = View.GONE
 
 
             // Agregar el oyente de clics al elemento del RecyclerView

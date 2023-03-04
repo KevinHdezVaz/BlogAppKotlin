@@ -1,13 +1,35 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <me.ibrahimsn.particle.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:particleCount="20"
+        app:particleMinRadius="3"
+        app:particleMaxRadius="10"
+        app:particleLinesEnabled="false"
+
+        app:particlesBackgroundColor="@color/white"
+        app:particleColor="@color/colorPrimary"
+        />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
     <ImageView
         android:id="@+id/imagen_curso"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+
         android:scaleType="centerCrop"  />
 
     <TextView
@@ -32,4 +54,6 @@
         android:text="Abrir Link"
         android:layout_marginTop="16dp" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

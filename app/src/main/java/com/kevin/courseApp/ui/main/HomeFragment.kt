@@ -12,7 +12,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -28,6 +30,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.kevin.courseApp.MainActivity
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.Result
 import com.kevin.courseApp.core.adapterCurso.CursosAdapter
@@ -42,7 +45,7 @@ import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
 import com.kevin.courseApp.utils.animacionProgress
 import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home)   {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var cursosAdapter: CursosAdapter
 
@@ -54,7 +57,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
 
 
-
+//para salir
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+             requireActivity().finish()
+        }
 
         nombreCorreoNav()
 
@@ -112,6 +118,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         animacionProgress.mostrarCarga(requireContext() )
 
     }
+
 
     private fun nombreCorreoNav() {
         // Obtener la referencia al NavHeader
@@ -177,7 +184,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         toggle.syncState()
 
 
+
+
+        // Agregar un listener al DrawerLayout
+        binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
+            override fun onDrawerStateChanged(newState: Int) {}
+
+            override fun onDrawerClosed(drawerView: View) {
+                (requireActivity() as MainActivity).showSmooth()
+            }
+
+            override fun onDrawerOpened(drawerView: View) {
+                // Lógica a realizar cuando se abre el Navigation Drawer
+                (requireActivity() as MainActivity).hideSmoothBottomBar()
+            }
+        })
+
+
+
     }
+
 
     private fun imagenesCarousel() {
 
@@ -195,6 +222,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.particleView.resume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.particleView.pause()
+    }
 
 
 }

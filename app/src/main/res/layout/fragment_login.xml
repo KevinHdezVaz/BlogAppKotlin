@@ -76,8 +76,9 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="50dp"
                         android:fontFamily="@font/indigo_daisy"
-                        android:text="login"
-                        android:textColor="@color/black"
+                        android:text="Login"
+
+                        android:textColor="@color/white"
                         android:textSize="55sp" />
 
 

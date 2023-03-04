@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
 
         val lastUsed = sharedPreferences.getLong("last_used", 0)
-        val nextAlarm = lastUsed + (7 * 24 * 60 * 60 * 1000) // Sumar una semana en milisegundos
+        val nextAlarm = lastUsed + (345600000) // Sumar una semana en milisegundos
         alarmManager.set(AlarmManager.RTC_WAKEUP, nextAlarm, pendingIntent)
 
 
@@ -87,11 +87,24 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
+                R.id.introFragment2 -> {
+                    binding.bottomBar.hide()
+                }
                 else -> {
                     binding.bottomBar.show()
                 }
             }
         }
     }
+    fun hideSmoothBottomBar() {
+        // oculta el SmoothBottomBar
+        binding.bottomBar.hide()
 
+    }
+
+    fun showSmooth() {
+        // oculta el SmoothBottomBar
+        binding.bottomBar.show()
+
+    }
 }
