@@ -28,7 +28,7 @@ class CursoDetallesActivity : AppCompatActivity() {
 
 
         var adRequest = AdRequest.Builder().build()
-        RewardedAd.load(this,"ca-app-pub-3940256099942544/5224354917", adRequest, object : RewardedAdLoadCallback() {
+        RewardedAd.load(this,"ca-app-pub-5486388630970825/8955067655", adRequest, object : RewardedAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                  rewardedAd = null
                 binding.enlaceButton.isEnabled = false
@@ -54,50 +54,39 @@ class CursoDetallesActivity : AppCompatActivity() {
         binding.descripcionCurso.text = descripcion
         Glide.with(this).load(imagenUrl).into(binding.imagenCurso)
 
-
         rewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
             override fun onAdClicked() {
-                // Called when a click is recorded for an ad.
                 Log.d(TAG, "Ad was clicked.")
             }
 
             override fun onAdDismissedFullScreenContent() {
-                // Called when ad is dismissed.
-                // Set the ad reference to null so you don't show the ad a second time.
                 Log.d(TAG, "Ad dismissed fullscreen content.")
                 rewardedAd = null
             }
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                // Called when ad fails to show.
                 Log.e(TAG, "Ad failed to show fullscreen content.")
                 rewardedAd = null
             }
 
             override fun onAdImpression() {
-                // Called when an impression is recorded for an ad.
                 Log.d(TAG, "Ad recorded an impression.")
             }
 
             override fun onAdShowedFullScreenContent() {
-                // Called when ad is shown.
                 Log.d(TAG, "Ad showed fullscreen content.")
             }
         }
-
-
 
         // Configurar el botón para abrir el enlace en un WebView
         binding.enlaceButton.setOnClickListener {
             val intent = Intent(this, WebViewCurso::class.java)
             intent.putExtra("enlace", enlace)
             intent.putExtra("titulo", titulo)
-
             startActivity(intent)
 
             rewardedAd?.let { ad ->
                 ad.show(this, OnUserEarnedRewardListener { rewardItem ->
-                    // Handle the reward.
                     val rewardAmount = rewardItem.amount
                     val rewardType = rewardItem.type
                     Log.d(TAG, "User earned the reward.")
@@ -106,13 +95,9 @@ class CursoDetallesActivity : AppCompatActivity() {
             } ?: run {
                 Log.d(TAG, "The rewarded ad wasn't ready yet.")
                 Toast.makeText(this@CursoDetallesActivity,"nooooo",Toast.LENGTH_SHORT).show()
-
             }
-
         }
-
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

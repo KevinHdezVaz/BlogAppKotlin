@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:106392319602:android:108de16d3ce84bc73cb4eb",
+        "mobilesdk_app_id": "1:106392319602:android:4c743d87b351f3b23cb4eb",
         "android_client_info": {
           "package_name": "com.kevin.courseApp"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "106392319602-0g97d1gnk7knt8ciege8p022kee8r6m2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.kevin.courseApp",
-            "certificate_hash": "be14a2786365de198174c8c360464357487df115"
-          }
-        },
         {
           "client_id": "106392319602-956qok154u0itokd87je3ui5qrbisak0.apps.googleusercontent.com",
           "client_type": 3

@@ -1,22 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Acerca">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_acerca"
+                    android:icon="@drawable/ic_baseline_info_24"
+                    android:title="Información" />
 
-    <group android:checkableBehavior="single">
+            </group>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/navTerminos"
+                    android:icon="@drawable/ic_baseline_insert_drive_file_24"
+                    android:title="Terminos y Condiciones" />
 
-        <item
-            android:id="@+id/menu_item_1"
-            android:icon="@drawable/find"
-            android:title="Inicio" />
+            </group>
+        </menu>
 
-        <item
-            android:id="@+id/menu_item_2"
-            android:icon="@drawable/find"
-            android:title="Configuración" />
 
-        <item
-            android:id="@+id/menu_salir"
-            android:icon="@drawable/ic_baseline_exit_to_app_24"
-            android:title="Salir" />
+    </item>
 
-    </group>
+
+    <item android:title="Compartir App">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_baseline_mobile_screen_share_24"
+                    android:title="Compartir" />
+            </group>
+        </menu>
+    </item>
+
+
+
+
+    <item android:title="Combina esta app con:">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_baseline_star_border_24"
+
+                    android:title="FormuTodo - Fórmulas y Tarea Fácil" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Sali">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/salir"
+                    android:icon="@drawable/ic_baseline_exit_to_app_24"
+
+                    android:title="Salir" />
+            </group>
+        </menu>
+    </item>
 
 </menu>
