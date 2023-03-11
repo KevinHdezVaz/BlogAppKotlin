@@ -19,6 +19,8 @@
         android:name="com.kevin.courseApp.ui.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
+
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
@@ -56,19 +58,27 @@
     <fragment
         android:id="@+id/categoriasFragment"
         android:name="com.kevin.courseApp.ui.categoriaCursos.CategoriasFragment"
-        android:label="CategoriasFragment" />
+        android:label="CategoriasFragment" >
+        <action
+            android:id="@+id/action_categoriasFragment_to_categoria_Detalles"
+            app:destination="@id/categoria_Detalles" />
+    </fragment>
     <fragment
         android:id="@+id/introFragment2"
         android:name="com.kevin.courseApp.ui.main.intro.IntroFragment"
         android:label="IntroFragment" >
         <action
-            android:id="@+id/action_introFragment2_to_loginFragment"
-            app:destination="@id/loginFragment"
+            android:id="@+id/action_introFragment2_to_homeFragment"
+            app:destination="@id/homeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popEnterAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_in_left" />
     </fragment>
+    <fragment
+        android:id="@+id/categoria_Detalles"
+        android:name="com.kevin.courseApp.ui.categoriaCursos.Categoria_Detalles"
+        android:label="Categoria_Detalles" />
 
 
 </navigation>

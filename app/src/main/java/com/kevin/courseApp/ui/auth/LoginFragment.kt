@@ -37,9 +37,9 @@ import com.kevin.courseApp.ui.main.HomeFragment
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding
     var simpleVideoView: VideoView? = null
+    private val GOOGLE_SIGNIN =100
     var mediaControls: MediaController? = null
 
-    private lateinit var googleSignInClient : GoogleSignInClient
 
     private val firebaseAuth by lazy { FirebaseAuth.getInstance() }
     private val viewmodel by viewModels<AuthViewModel> {
@@ -58,21 +58,25 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentLoginBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
-isUserLoggin()
+        isUserLoggin()
         duLogin()
         GotosignUp()
         videoFondo()
         gotoInvitado()
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
 
-        googleSignInClient = GoogleSignIn.getClient(requireContext() , gso)
+
 
         binding.btnGoogle.setOnClickListener{
-            signInGoogle()
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+
+            val googleSignInClient = GoogleSignIn.getClient(requireContext() , gso)
+
+            googleSignInClient.signOut()
+            startActivityForResult(googleSignInClient.signInIntent,GOOGLE_SIGNIN)
 
         }
 
@@ -90,10 +94,37 @@ isUserLoggin()
         }
     }
 
-
+/*
     private fun signInGoogle(){
         val signInIntent = googleSignInClient.signInIntent
         launcher.launch(signInIntent)
+    }
+
+
+ */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    if(requestCode == GOOGLE_SIGNIN){
+        val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+        try {
+            val account = task.getResult(ApiException::class.java)
+
+            if(account != null){
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+
+                FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener{
+                    if(it.isSuccessful){
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
+                }
+            }
+        }catch (e: ApiException){
+            Toast.makeText(requireContext(),e.toString(),Toast.LENGTH_SHORT).show()
+
+        }
+
+    }
     }
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
@@ -102,6 +133,7 @@ isUserLoggin()
 
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResults(task)
+            Toast.makeText(requireContext(),"OK",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -120,7 +152,7 @@ isUserLoggin()
         val credential = GoogleAuthProvider.getCredential(account.idToken , null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
-               findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
 
             }else{
                 Toast.makeText(requireContext(), it.exception.toString() , Toast.LENGTH_SHORT).show()
@@ -162,9 +194,9 @@ isUserLoggin()
 
 
     fun isUserLoggin(){
-       /**
-        * Si el usuario essta logueado (diferente de nulo) pasar al home Fragment
-        * */
+        /**
+         * Si el usuario essta logueado (diferente de nulo) pasar al home Fragment
+         * */
 
         firebaseAuth.currentUser?.let {
 
@@ -203,7 +235,7 @@ isUserLoggin()
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
 
         }
-     }
+    }
     private fun signIn(email: String,password: String){
 
         viewmodel.SignIn(email,password).observe(viewLifecycleOwner, Observer {

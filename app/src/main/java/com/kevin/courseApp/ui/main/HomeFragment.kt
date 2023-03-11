@@ -45,10 +45,10 @@ import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
 class HomeFragment : Fragment(R.layout.fragment_home)   {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var cursosAdapter: CursosAdapter
-      var epicDialog2: Dialog? = null
+    var epicDialog2: Dialog? = null
     var epicDialogTErminos: Dialog? = null
     private lateinit var viewModel: HomeScreenViewModel
-     var seguir: Button? = null
+    var seguir: Button? = null
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -60,8 +60,6 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
              requireActivity().finish()
         }
-
-        nombreCorreoNav()
 
         cursosAdapter = CursosAdapter(listOf())
         binding.recyclerViewCursos.apply {
@@ -78,10 +76,6 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
         imagenesCarousel()
         hamburgesa()
-
-
-
-
 
 
         viewModel.getCursos().observe(viewLifecycleOwner) { result ->
@@ -119,35 +113,6 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
     }
 
 
-    private fun nombreCorreoNav() {
-
-        val navHeader = binding.navigationView.getHeaderView(0)
-        val user = FirebaseAuth.getInstance().currentUser
-
-// Obtener la referencia a las vistas del NavHeader
-        // Obtener la información de la cuenta de Google del usuario autenticado
-        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        if (account != null) {
-            // Obtener la imagen de perfil de Google
-            val photoUrl = account.photoUrl
-            if (photoUrl != null) {
-                // Cargar la imagen en la ImageView utilizando Glide
-                Glide.with(this)
-                    .load(photoUrl)
-                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
-                    .into(navHeader.findViewById(R.id.imagenHeader))
-            }
-        }
-
-
-        val nombreUsuario = navHeader.findViewById<TextView>(R.id.nombre_usuario)
-        val correoUsuario = navHeader.findViewById<TextView>(R.id.correo_usuario)
-
-// Asignar el nombre y correo del usuario a las vistas correspondientes en el NavHeader
-        nombreUsuario.text = user?.displayName
-        correoUsuario.text = user?.email
-
-    }
 
     private fun hamburgesa() {
 

@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
 
-                android:text="La aplicación AprendeApp ofrece una amplia variedad de cursos en línea de diversas plataformas educativas y organizaciones. Estos cursos son propiedad de sus respectivos dueños y no son de nuestra propiedad. La aplicación solo sirve como una plataforma para acceder a ellos de manera más conveniente.
+                android:text="La aplicación SaberApp ofrece una amplia variedad de cursos en línea de diversas plataformas educativas y organizaciones. Estos cursos son propiedad de sus respectivos dueños y no son de nuestra propiedad. La aplicación solo sirve como una plataforma para acceder a ellos de manera más conveniente.
 
 Nosotros no nos hacemos responsables de la calidad, precisión o actualidad de los contenidos proporcionados por las plataformas educativas o las organizaciones que ofrecen los cursos. La aplicación solo proporciona un acceso más fácil a los cursos, y no somos responsables de los resultados obtenidos a través de estos cursos.
 
@@ -53,18 +53,13 @@ Al utilizar la aplicación, acepta estos términos y condiciones. Si no está de
 
         <Button
             android:id="@+id/botonvamo"
-            android:layout_width="115dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/msjResultado"
-            android:layout_alignParentStart="true"
-
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="137dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="159dp"
-            android:layout_marginBottom="30dp"
+        android:layout_margin="30dp"
+         android:layout_centerInParent="true"
             android:background="@drawable/btn_blue_normal"
-            android:gravity="center"
+
             android:text="REGRESAR"
             android:textColor="@android:color/white"
             android:textStyle="bold" />

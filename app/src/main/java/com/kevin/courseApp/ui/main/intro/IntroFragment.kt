@@ -34,13 +34,11 @@ class IntroFragment: Fragment() {
 
 
         if (!isFirstTime(requireContext())) {
-            findNavController().navigate(R.id.action_introFragment2_to_loginFragment)
+            findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
         }
 
-
          binding.btnCreateAccount.setOnClickListener {
-            findNavController().navigate(R.id.action_introFragment2_to_loginFragment)
-
+            findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
         }
 
         // Encontrar la vista del ViewPager en tu layout y configurarla

@@ -20,25 +20,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="categoriasFragment">
+                  <entry key="categoria_Detalles">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="572" />
-                            <option name="y" value="12" />
+                            <option name="x" value="1022" />
+                            <option name="y" value="83" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="cursoDetallesActivity">
+                  <entry key="categoriasFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1168" />
-                            <option name="y" value="317" />
+                            <option name="x" value="603" />
+                            <option name="y" value="7" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -82,13 +82,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="512" />
+                            <option name="x" value="-30" />
+                            <option name="y" value="796" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_introFragment2_to_loginFragment">
+                            <entry key="action_introFragment2_to_homeFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

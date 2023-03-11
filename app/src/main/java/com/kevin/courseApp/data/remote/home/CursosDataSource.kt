@@ -27,8 +27,25 @@ class CursosDataSource {
         }
     }
 
+    suspend fun cursosFiltradoCategory(categoria: String): Result<List<Cursos>> {
+        val postList = mutableListOf<Cursos>()
+        try {
+            val dataSnapshot = FirebaseDatabase.getInstance().reference.child("cursos").get().await()
+            for (postSnapshot in dataSnapshot.children) {
+                val curso = postSnapshot.getValue(Cursos::class.java)
 
+                // Filtrar cursos por categoría
+                if (curso?.categoria == categoria) {
+                    curso.let { postList.add(it) }
+                }
+                //por aqui las ordena por nombre
 
+            }
+            return Result.Success(postList)
+        } catch (e: Exception) {
+            return Result.Failure(e)
+        }
+    }
 
 
 }

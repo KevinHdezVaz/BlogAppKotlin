@@ -107,6 +107,7 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
                 else -> {}
             }
         }
+//llamado a firebase
 
         cursosAdapter.setOnItemClickListener(object : CursosAdapter.OnItemClickListener {
             override fun onItemClick(curso: Cursos) {

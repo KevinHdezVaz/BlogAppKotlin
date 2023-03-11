@@ -52,9 +52,6 @@ class BuscarAdapter(var cursos: List<Cursos>) : RecyclerView.Adapter<BuscarAdapt
             binding.tituloTextView.text = curso.titulo
             binding.descripcionTextView.text = curso.empresa
 
-
-
-
             // Agregar el oyente de clics al elemento del RecyclerView
             binding.root.setOnClickListener {
                 val position = adapterPosition

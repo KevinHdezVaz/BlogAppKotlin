@@ -17,8 +17,8 @@
                     android:id="@+id/particleView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:particleCount="40"
-                    app:particleMinRadius="3"
+                    app:particleCount="90"
+                    app:particleMinRadius="5"
                     app:particleMaxRadius="10"
 app:particleLinesEnabled="false"
                     app:particlesBackgroundColor="@color/white"
@@ -28,7 +28,8 @@ app:particleLinesEnabled="false"
                         <androidx.appcompat.widget.Toolbar
                             android:layout_width="match_parent"
                             android:id="@+id/toolbar"
-                            app:title="Home"
+                            app:titleTextColor="@color/white"
+                            app:title="@string/app_name"
                             android:layout_height="?actionBarSize"
                             android:background="@color/colorPrimaryDark" />
 

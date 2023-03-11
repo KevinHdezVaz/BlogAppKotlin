@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="110dp"
     android:orientation="vertical"
     android:gravity="center_vertical"
     android:padding="16dp"
@@ -11,24 +11,10 @@
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
+
         android:id="@+id/imagenHeader"
-        android:src="@drawable/searchview_backgound" />
+        android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/nombre_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre del usuario"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:paddingTop="8dp" />
 
-    <TextView
-        android:id="@+id/correo_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="correo@correo.com"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
 
 </LinearLayout>

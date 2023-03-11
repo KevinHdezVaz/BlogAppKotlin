@@ -36,36 +36,10 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         setupSmoothBottomMenu()
         observeDestinationChange()
-        notificacion1Semana()
 
 
 
-    }
 
-    private fun notificacion1Semana() {
-
-
-        val sharedPreferences = this.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putLong("last_used", System.currentTimeMillis())
-        editor.apply()
-
-        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, NotificacionReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-
-        val lastUsed = sharedPreferences.getLong("last_used", 0)
-        val nextAlarm = lastUsed + (345600000) // Sumar una semana en milisegundos
-        alarmManager.set(AlarmManager.RTC_WAKEUP, nextAlarm, pendingIntent)
-
-
-
-//habilita el canal
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel("default_channel", "Canal predeterminado", NotificationManager.IMPORTANCE_DEFAULT)
-            notificationManager.createNotificationChannel(channel)
-        }
     }
 
     private fun setupSmoothBottomMenu() {

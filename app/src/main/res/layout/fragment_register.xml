@@ -66,40 +66,11 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/indigo_daisy"
-                        android:text="registro"
+                        android:text="Registro"
                         android:textColor="@color/black"
-                        android:textSize="55sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        tools:ignore="UseCompoundDrawables">
-
-                        <ImageView
-                             android:id="@+id/imageaLogin"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_marginTop="15dp"
-                            android:src="@drawable/ic_baseline_arrow_left_24"
-                            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/cairo_light"
-                            android:text="asdfasd"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                        android:textSize="45sp" />
 
 
-                    </LinearLayout>
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -218,12 +189,12 @@
                         android:id="@+id/btnSignUp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="35dp"
+                        android:layout_margin="55dp"
                         android:background="@drawable/round_button"
                         android:fontFamily="@font/cairo_light"
-                        android:text="registro"
+                        android:text="REGISTRARSE"
                         android:textAllCaps="false"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="19sp"
                         android:textStyle="bold" />
 

@@ -48,7 +48,7 @@
         </menu>
     </item>
 
-    <item android:title="Sali">
+    <item android:title="Salir">
         <menu>
             <group android:checkableBehavior="single">
                 <item

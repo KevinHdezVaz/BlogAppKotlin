@@ -80,7 +80,9 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
+                                                <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="/private/var/folders/d0/63vd56792yn7dt5lwmdkybmw0000gn/T/ic_android_black_24dp.xml" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -92,8 +94,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$USER_HOME$/Downloads/S (5).png" />
-                                                <entry key="scalingPercent" value="110" />
+                                                <entry key="imagePath" value="$USER_HOME$/Downloads/logofiunal2.png" />
+                                                <entry key="scalingPercent" value="109" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -106,6 +108,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -117,6 +120,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>

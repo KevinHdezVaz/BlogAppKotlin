@@ -11,6 +11,6 @@ data class Cursos(
     val categoria: String = "",
     val empresa: String = "",
     val imagenFondo: String="",
-    val certificado: Boolean = false // <-- Agregar esta propiedad
+    val certificado: Boolean = false
 )
     : Serializable

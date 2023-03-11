@@ -8,4 +8,6 @@ interface CursosRepo
 {
 
     suspend fun getCursosAllRepo():  Result<List<Cursos>>
+
+    suspend fun getCursoFiltrado():  Result<List<Cursos>>
 }

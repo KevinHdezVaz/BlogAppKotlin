@@ -7,6 +7,11 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"/>
 
+    <item
+        android:id="@+id/categoriasFragment"
+        android:title="categ"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_category_24"/>
 
 
     <item

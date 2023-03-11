@@ -16,6 +16,9 @@ import com.kevin.courseApp.domain.auth.AuthRepoImplements
 import com.kevin.courseApp.presentation.auth.AuthViewModel
 import com.kevin.courseApp.presentation.auth.LoginScreeViewModelFactory
 import com.kevin.courseApp.ui.main.HomeFragment
+import com.kevin.courseApp.utils.animacionProgress
+import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
+import com.kevin.courseApp.utils.animacionProgress.Companion.mostrarCarga
 import com.kevin.courseApp.utils.validateRegisterSignUp.Companion.validateEmail
 import com.kevin.courseApp.utils.validateRegisterSignUp.Companion.validateForm
 import com.kevin.courseApp.utils.validateRegisterSignUp.Companion.validatePassword
@@ -32,9 +35,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         super.onViewCreated(view, savedInstanceState)
         getSignUp()
 
-        binding.imageaLogin.setOnClickListener{
-            findNavController().popBackStack()
-        }
+
 
     }
 
@@ -57,7 +58,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             if(!validateEmail(email)) binding.editTextEmail.error ="This is not valid email"
             if(!validatePassword(password)) binding.editTextPassword.error="You Better your password"
             if(validateForm(email,password, passwordConfirmation = confirmpassword))
-                Toast.makeText(requireContext(),"Done!",Toast.LENGTH_SHORT).show()
+
 
 
 
@@ -79,17 +80,17 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 when(it){
                     is  Result.Loading ->{
 
-                        //   HomeFragment.mostrarCarga(requireContext(), "loading.json")
+                        mostrarCarga(requireContext())
                         binding.btnSignUp.isEnabled= false
                     }
                     is  Result.Success ->{
-                        //    HomeFragment.esconderCarga()
+                        esconderCarga()
                         findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
 
 
                     }
                     is  Result.Failure ->{
-                        //      HomeFragment.esconderCarga()
+                        mostrarCarga(requireContext())
                         Toast.makeText(requireContext(),"Ocurrio un error ${it.exception}",Toast.LENGTH_SHORT).show()
                         binding.btnSignUp.isEnabled= true
                     }
