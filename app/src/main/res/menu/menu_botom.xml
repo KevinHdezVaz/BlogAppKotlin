@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/categoriasFragment"
-        android:title="categ"
+        android:title="Categoria"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_category_24"/>
 

@@ -35,13 +35,6 @@ class CategoryDetalle_Activity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        /***
-         * agrega un metodo que los filtre por categorias
-         * ejem: anterior pantalla : "programacion"
-         * en esta pantalla, llamas a los cursos y los filtras por "programacion"
-         *
-         */
-
         database = FirebaseDatabase.getInstance().reference
 
 

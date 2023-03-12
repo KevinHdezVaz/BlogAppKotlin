@@ -59,7 +59,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.registerFragment -> {
                     binding.bottomBar.hide()
                 }
-
+                R.id.categoria_Detalles -> {
+                    binding.bottomBar.hide()
+                }
 
                 R.id.introFragment2 -> {
                     binding.bottomBar.hide()

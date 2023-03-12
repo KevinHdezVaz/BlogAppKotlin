@@ -44,7 +44,10 @@ class Categoria_Detalles : Fragment() {
 
         viewModel = ViewModelProvider(this, HomeScreenViewModelFactory(CursosImplement(CursosDataSource())))[HomeScreenViewModel::class.java]
 
-        viewModel.getCursosFiltrados().observe(viewLifecycleOwner) { result ->
+        //
+        val categoria = arguments?.getString("categoria")
+
+        viewModel.getCursosFiltrados(categoria!!).observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {
                     val cursos = result.data

@@ -1,83 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
->
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <me.ibrahimsn.particle.ParticleView
-        android:id="@+id/particleView"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager_mainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_mainMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:particleCount="60"
-        app:particleMinRadius="5"
-        app:particleMaxRadius="10"
-        app:particleLinesEnabled="false"
-        app:particlesBackgroundColor="@color/white"
-        app:particleColor="@color/teal_700"
-        />
+        android:elevation="-5dp"
+        app:layoutDescription="@xml/main_motion_layout_scene">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/layout_info"
-        android:orientation="vertical"
-        android:gravity="center">
-
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:overScrollMode="never" />
-
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/pageIndicator"
+        <ImageView
+            android:id="@+id/img_cloud1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            app:tabGravity="center"
-            app:tabIndicatorHeight="0dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="dsgdsfg"
+            android:src="@drawable/cloud_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/img_cloud2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="-16dp"
+            android:contentDescription="sdfgds"
+            android:src="@drawable/cloud_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            app:tabBackground="@drawable/onboarding_viewpager_selector_white"/>
+        <ImageView
+            android:id="@+id/img_cloud3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-24dp"
+            android:layout_marginTop="6dp"
+            android:contentDescription="sdfgds"
+            android:src="@drawable/cloud_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_cloud2" />
 
+        <ImageView
+            android:id="@+id/img_triangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="-64dp"
+            android:src="@drawable/img_triangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_cloud3" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/img_donutRectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-96dp"
+            android:layout_marginTop="-24dp"
+            android:src="@drawable/img_donut"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_centerBgArt" />
 
+        <ImageView
+            android:id="@+id/img_centerBgArt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/img_bg_art"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_triangle" />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_info"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/button_nextPage"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignStart="@id/main_progressInidicator"
+        android:layout_alignEnd="@id/main_progressInidicator"
+        android:layout_alignTop="@id/main_progressInidicator"
+        android:layout_alignBottom="@id/main_progressInidicator"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_next_button"
+        android:src="@drawable/ic_next" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/main_progressInidicator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:indicatorSize="56dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@drawable/layout_rounded_top_white"
-        android:weightSum="10">
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_create_account"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/btn_blue_selector"
-            android:text="INICIAR"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:fontFamily="@font/josefinsans_regular"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryDark" />
-
-
-
-    </LinearLayout>
-
-
-
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:progress="33"/>
 </RelativeLayout>

@@ -8,15 +8,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kevin.courseApp.R
 import com.kevin.courseApp.databinding.FragmentIntroBinding
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.emitter.Emitter
 import java.util.concurrent.TimeUnit
+import kotlin.math.nextUp
 
 class IntroFragment: Fragment() {
 
@@ -37,15 +41,50 @@ class IntroFragment: Fragment() {
             findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
         }
 
-         binding.btnCreateAccount.setOnClickListener {
-            findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
+
+
+        val myViewPager: ViewPager2 = binding.viewPagerMainActivity
+
+
+        myViewPager.adapter = MyViewPagerAdapter()
+        val myMotionLayout: MotionLayout = binding.layoutMainMotionLayout
+        val buttonNextPage: ImageButton = binding.buttonNextPage
+        val progressIndicator: CircularProgressIndicator = binding.mainProgressInidicator
+
+
+        buttonNextPage.setOnClickListener {
+            if (myViewPager.currentItem != 2) {
+                myViewPager.setCurrentItem(myViewPager.currentItem + 1, true)
+            }
         }
 
-        // Encontrar la vista del ViewPager en tu layout y configurarla
-        mViewPager = view.findViewById(R.id.viewPager)
-        mViewPager.adapter = adapter(requireActivity(), requireContext())
-        TabLayoutMediator(view.findViewById(R.id.pageIndicator), mViewPager) { _, _ -> }.attach()
-        mViewPager.offscreenPageLimit = 1
+        myViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                val currProgress = (position + positionOffset) / 2
+                myMotionLayout.progress = currProgress
+                progressIndicator.progress =
+                    (((myViewPager.currentItem + 1) / 3f).nextUp() * 100).toInt()
+
+                when (position) {
+                    2 ->
+                    {    buttonNextPage.setImageResource(R.drawable.ic_done)
+
+                        binding.buttonNextPage.setOnClickListener {
+                            findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
+                        }
+
+                    }
+
+                    else -> buttonNextPage.setImageResource(R.drawable.ic_next)
+                }
+            }
+        })
+
 
 
 
