@@ -48,16 +48,5 @@
         </menu>
     </item>
 
-    <item android:title="Salir">
-        <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/salir"
-                    android:icon="@drawable/ic_baseline_exit_to_app_24"
-
-                    android:title="Salir" />
-            </group>
-        </menu>
-    </item>
 
 </menu>

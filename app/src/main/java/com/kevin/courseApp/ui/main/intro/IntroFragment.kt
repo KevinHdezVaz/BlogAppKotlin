@@ -17,9 +17,6 @@ import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kevin.courseApp.R
 import com.kevin.courseApp.databinding.FragmentIntroBinding
-import nl.dionsegijn.konfetti.core.Party
-import nl.dionsegijn.konfetti.core.emitter.Emitter
-import java.util.concurrent.TimeUnit
 import kotlin.math.nextUp
 
 class IntroFragment: Fragment() {

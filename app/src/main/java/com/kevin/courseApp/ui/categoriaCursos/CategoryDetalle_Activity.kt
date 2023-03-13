@@ -84,6 +84,10 @@ class CategoryDetalle_Activity : AppCompatActivity() {
                     putExtra("descripcion", curso.descripcion)
                     putExtra("imagenUrl", curso.imagenUrl)
                     putExtra("enlace", curso.enlace)
+                    putExtra("valoracion", curso.valoracion)
+                    putExtra("duracion", curso.duracion)
+                    putExtra("idioma", curso.idioma)
+                    putExtra("estudiantes", curso.estudiantes)
                 }
                 startActivity(intent)
             }

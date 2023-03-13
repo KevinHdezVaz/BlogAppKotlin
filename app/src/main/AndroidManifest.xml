@@ -16,6 +16,13 @@
         android:theme="@style/Theme.BlogAppKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".ui.main.youtubeVideoDetails.YoutubeVideoActvity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.categoriaCursos.CategoryDetalle_Activity"
             android:exported="false">
             <meta-data

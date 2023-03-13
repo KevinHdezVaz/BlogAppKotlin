@@ -103,6 +103,10 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                         putExtra("descripcion", curso.descripcion)
                         putExtra("imagenUrl", curso.imagenUrl)
                         putExtra("enlace", curso.enlace)
+                        putExtra("valoracion", curso.valoracion)
+                        putExtra("duracion", curso.duracion)
+                        putExtra("idioma", curso.idioma)
+                        putExtra("estudiantes", curso.estudiantes)
                     }
                     startActivity(intent)
                 }
@@ -142,11 +146,7 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                     formutodo("https://play.google.com/store/apps/details?id=com.app.formutodo&hl=es_MX&gl=US")
                         true
                 }
-                R.id.salir -> {
-                    FirebaseAuth.getInstance().signOut()
-                    findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
-                    true
-                }
+
                 // Agrega más elementos del menú si es necesario
                 else -> false
             }

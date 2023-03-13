@@ -62,6 +62,9 @@
         <action
             android:id="@+id/action_categoriasFragment_to_categoria_Detalles"
             app:destination="@id/categoria_Detalles" />
+        <action
+            android:id="@+id/action_categoriasFragment_to_youtubeVideoDetails"
+            app:destination="@id/youtubeVideoDetails" />
     </fragment>
     <fragment
         android:id="@+id/introFragment2"
@@ -79,6 +82,10 @@
         android:id="@+id/categoria_Detalles"
         android:name="com.kevin.courseApp.ui.categoriaCursos.Categoria_Detalles"
         android:label="Categoria_Detalles" />
+    <fragment
+        android:id="@+id/youtubeVideoDetails"
+        android:name="com.kevin.courseApp.ui.main.youtubeVideoDetails.YoutubeVideoDetails"
+        android:label="YoutubeVideoDetails" />
 
 
 </navigation>

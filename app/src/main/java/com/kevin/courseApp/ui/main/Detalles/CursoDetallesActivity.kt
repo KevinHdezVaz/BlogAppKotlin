@@ -1,5 +1,6 @@
 package com.kevin.courseApp.ui.main.Detalles
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ class CursoDetallesActivity : AppCompatActivity() {
     private final var TAG = "MainActivity"
 
     private lateinit var binding: ActivityCursoDetallesBinding
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +30,8 @@ class CursoDetallesActivity : AppCompatActivity() {
 
 
         var adRequest = AdRequest.Builder().build()
+        //original
+        //ca-app-pub-5486388630970825/8955067655
         RewardedAd.load(this,"ca-app-pub-5486388630970825/8955067655", adRequest, object : RewardedAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                  rewardedAd = null
@@ -42,15 +46,27 @@ class CursoDetallesActivity : AppCompatActivity() {
         })
 
          //TODO: agregar sistema de likes y comentarios a los detallesActivity
-        
+
+
         // Obtener los datos del curso desde el intent
         val titulo = intent.getStringExtra("titulo")
+
         val descripcion = intent.getStringExtra("descripcion")
         val imagenUrl = intent.getStringExtra("imagenUrl")
         val enlace = intent.getStringExtra("enlace")
+        val valoracion = intent.getDoubleExtra("valoracion",0.0)
+        val duracion = intent.getIntExtra("duracion",0)
+        val idioma = intent.getStringExtra("idioma")
+        val estudiantes = intent.getDoubleExtra("estudiantes",0.0)
+
 
         // Mostrar los datos del curso en la vista
         binding.tituloCurso.text = titulo
+        binding.ratingBar.rating = valoracion.toFloat()
+        binding.txtDuracion.text = "$duracion horas"
+        binding.txtIdioma.text = idioma
+        binding.txtEstudiantes.text = estudiantes.toString()
+
         binding.descripcionCurso.text = descripcion
         Glide.with(this).load(imagenUrl).into(binding.imagenCurso)
 
@@ -90,11 +106,11 @@ class CursoDetallesActivity : AppCompatActivity() {
                     val rewardAmount = rewardItem.amount
                     val rewardType = rewardItem.type
                     Log.d(TAG, "User earned the reward.")
-                    Toast.makeText(this@CursoDetallesActivity,"CHIDO",Toast.LENGTH_SHORT).show()
+                 //   Toast.makeText(this@CursoDetallesActivity,"CHIDO",Toast.LENGTH_SHORT).show()
                 })
             } ?: run {
                 Log.d(TAG, "The rewarded ad wasn't ready yet.")
-                Toast.makeText(this@CursoDetallesActivity,"nooooo",Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this@CursoDetallesActivity,"nooooo",Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -106,6 +122,7 @@ class CursoDetallesActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+
      }
 
 

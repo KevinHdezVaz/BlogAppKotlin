@@ -13,10 +13,9 @@ android {
         applicationId "com.kevin.courseApp"
         minSdk 21
         targetSdk 33
-        versionCode 5
-        versionName "1.0031"
+        versionCode 6
+        versionName "1.00312"
         multiDexEnabled true
-
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -111,8 +110,7 @@ dependencies {
 //particles
     implementation 'com.github.ibrahimsn98:android-particles:2.0'
 
-    //konfeti
-    implementation 'nl.dionsegijn:konfetti-xml:2.0.2'
+ 
 
 
 }

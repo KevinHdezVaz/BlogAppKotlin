@@ -22,6 +22,7 @@ import com.kevin.courseApp.data.model.Categoria
 import com.kevin.courseApp.data.model.Cursos
 import com.kevin.courseApp.databinding.FragmentCategoriasBinding
 import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
+import com.kevin.courseApp.ui.main.youtubeVideoDetails.YoutubeVideoActvity
 
 class CategoriasFragment : Fragment() {
 
@@ -48,6 +49,8 @@ class CategoriasFragment : Fragment() {
 
         gridView.setOnItemClickListener { _, view, position, _ ->
             val bundle = Bundle()
+
+
             when (position) {
                 0 -> bundle.putString("categoria", "Programación")
                 1 -> bundle.putString("categoria", "Idiomas")
@@ -59,7 +62,10 @@ class CategoriasFragment : Fragment() {
                 7 -> bundle.putString("categoria", "Humanidades")
                 8 -> bundle.putString("categoria", "Arte")
             }
-            findNavController().navigate(R.id.action_categoriasFragment_to_categoria_Detalles, bundle)
+             findNavController().navigate(R.id.action_categoriasFragment_to_categoria_Detalles, bundle)
+
+
+
         }
 
 
