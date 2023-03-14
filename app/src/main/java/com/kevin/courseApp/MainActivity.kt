@@ -1,26 +1,19 @@
 package com.kevin.courseApp
 
-import android.app.AlarmManager
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.google.firebase.database.FirebaseDatabase
 import com.kevin.courseApp.core.hide
 import com.kevin.courseApp.core.show
 import com.kevin.courseApp.databinding.ActivityMainBinding
-import com.kevin.courseApp.utils.NotificacionReceiver
+import com.onesignal.OneSignal
 
 
 class MainActivity : AppCompatActivity() {
+    private val ONESIGNAL_APP_ID = "cc90886d-84ad-4966-ac52-e12cc0208c22"
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -37,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         setupSmoothBottomMenu()
         observeDestinationChange()
 
-
+        OneSignal.initWithContext(this);
+        OneSignal.setAppId(ONESIGNAL_APP_ID);
 
 
     }

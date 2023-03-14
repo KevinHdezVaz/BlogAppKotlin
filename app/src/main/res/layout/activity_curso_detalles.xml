@@ -187,6 +187,33 @@
         </androidx.cardview.widget.CardView>
 
 
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="30dp"
+    android:layout_margin="20dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="El curso esta cargando, espera a que el boton se ponga en azul para entrar. :)"
+        android:padding="15dp"
+        >
+
+    </TextView>
+
+
+</androidx.cardview.widget.CardView>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/CargandoProgress"
+            android:layout_height="wrap_content"
+            >
+
+        </ProgressBar>
 
         <Button
         android:id="@+id/enlace_button"

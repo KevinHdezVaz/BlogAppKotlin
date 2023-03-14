@@ -110,7 +110,8 @@ dependencies {
 //particles
     implementation 'com.github.ibrahimsn98:android-particles:2.0'
 
- 
+ //onesignal
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
 
 }

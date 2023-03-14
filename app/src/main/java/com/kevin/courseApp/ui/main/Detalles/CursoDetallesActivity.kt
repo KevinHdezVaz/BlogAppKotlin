@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -17,7 +18,7 @@ class CursoDetallesActivity : AppCompatActivity() {
     private var rewardedAd: RewardedAd? = null
     private final var TAG = "MainActivity"
 
-    private lateinit var binding: ActivityCursoDetallesBinding
+    private lateinit var binding:  ActivityCursoDetallesBinding
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class CursoDetallesActivity : AppCompatActivity() {
 
             override fun onAdLoaded(ad: RewardedAd) {
                 Log.d(TAG, "Ad was loaded.")
+                binding.CargandoProgress.visibility = View.GONE
                 binding.enlaceButton.isEnabled = true
                 rewardedAd = ad
             }
