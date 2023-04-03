@@ -25,7 +25,6 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
 import com.kevin.courseApp.MainActivity
 import com.kevin.courseApp.R
@@ -38,6 +37,7 @@ import com.kevin.courseApp.domain.home.CursosImplement
 import com.kevin.courseApp.presentation.HomeScreenViewModel
 import com.kevin.courseApp.presentation.HomeScreenViewModelFactory
 import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
+import com.kevin.courseApp.ui.main.favorites.FavoritosActivity
 import com.kevin.courseApp.utils.animacionProgress
 import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
 
@@ -61,6 +61,13 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
              requireActivity().finish()
         }
 
+
+        binding.imagenFav.setOnClickListener{
+            fragmentFav()
+        }
+
+
+
         cursosAdapter = CursosAdapter(listOf())
         binding.recyclerViewCursos.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -68,6 +75,7 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
         }
 
 
+//navigationview
 
         viewModel = ViewModelProvider(
             this,
@@ -107,6 +115,8 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                         putExtra("duracion", curso.duracion)
                         putExtra("idioma", curso.idioma)
                         putExtra("estudiantes", curso.estudiantes)
+                        putExtra("imagenFondo", curso.imagenFondo)
+                        putExtra("empresa", curso.empresa)
                     }
                     startActivity(intent)
                 }
@@ -116,10 +126,32 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
     }
 
+    private fun fragmentFav() {
+
+        val intent = Intent(activity, FavoritosActivity::class.java)
+        startActivity(intent)
+
+    }
 
 
     private fun hamburgesa() {
 
+// Obtener referencia al NavigationView
+        val navigationView = binding.navigationView
+
+// Obtener referencia al TextView en el header
+        val headerView = navigationView.getHeaderView(0)
+        val txtUsuario = headerView.findViewById<TextView>(R.id.textUsuario)
+
+// Obtener la información del usuario actual de Firebase
+        val user = FirebaseAuth.getInstance().currentUser
+
+// Verificar si el usuario ha iniciado sesión y establecer el correo electrónico o el usuario en el TextView correspondiente
+        if (user != null) {
+            txtUsuario.text = user.email ?:  "Usuario"
+        } else {
+            txtUsuario.text = "Usuario"
+        }
 
         // Establecer un oyente de eventos para los elementos del menú
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
@@ -131,13 +163,27 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
                     true
                 }
+                R.id.nav_fav -> {
+                 fragmentFav()
 
+
+                    true
+                }
                 R.id.navTerminos -> {
                     terminos()
                     binding.drawerLayout.closeDrawers()
 
                     true
                 }
+
+                R.id.salir -> {
+                    FirebaseAuth.getInstance().signOut()
+                    findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+
+                    true
+                }
+
+
                 R.id.nav_share -> {
                     compartir()
                     true
@@ -242,8 +288,8 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
         imageList.add(SlideModel(R.drawable.soluuu))
 
-        binding.imageSlider.setImageList(imageList)
-        binding.imageSlider.setItemClickListener(object : ItemClickListener {
+        //binding.imageSlider.setImageList(imageList)
+        /*binding.imageSlider.setItemClickListener(object : ItemClickListener {
             override fun onItemSelected(position: Int) {
               when(position){
                   0 -> formutodo("https://play.google.com/store/apps/details?id=com.app.formutodo&hl=es_MX&gl=US")
@@ -253,8 +299,10 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
               }
             }
-        })
+        })    */
     }
+
+
 
     override fun onResume() {
         super.onResume()

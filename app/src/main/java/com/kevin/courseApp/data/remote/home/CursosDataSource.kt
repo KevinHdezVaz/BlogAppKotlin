@@ -20,7 +20,30 @@ class CursosDataSource {
 
                 curso?.let { postList.add(it) }
                postList.sortBy { it.titulo }
+
             }
+
+            return Result.Success(postList)
+        } catch (e: Exception) {
+            return Result.Failure(e)
+        }
+    }
+
+
+    suspend fun getFavDatasource(): Result<List<Cursos>> {
+        val postList = mutableListOf<Cursos>()
+        try {
+            val mAuth = FirebaseAuth.getInstance()
+            val userId = mAuth.currentUser?.uid
+             val dataSnapshot = FirebaseDatabase.getInstance().getReference("usuarios/$userId/cursosGuardados").get().await()
+            for (postSnapshot in dataSnapshot.children) {
+                val curso = postSnapshot.getValue(Cursos::class.java)
+
+                curso?.let { postList.add(it) }
+
+
+            }
+
             return Result.Success(postList)
         } catch (e: Exception) {
             return Result.Failure(e)

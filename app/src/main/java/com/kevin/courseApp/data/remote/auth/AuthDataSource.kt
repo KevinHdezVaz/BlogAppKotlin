@@ -17,6 +17,7 @@ class AuthDataSource {
     suspend fun signIn(email:String, password:String):FirebaseUser?{
 //obtenemos datos de firebase
     val authResult = FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).await()
+
     return authResult.user
     }
 

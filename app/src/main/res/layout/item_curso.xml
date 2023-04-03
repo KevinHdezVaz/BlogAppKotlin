@@ -80,12 +80,7 @@ android:layout_marginTop="20dp"
         android:id="@+id/imagenArriba"
         android:layout_height="match_parent"
         >
-        <ImageView
-            android:layout_width="wrap_content"
-             android:rotation="-10"
-            android:src="@drawable/certificado"
-            android:layout_height="wrap_content"
-            ></ImageView>
+
     </RelativeLayout>
 
 

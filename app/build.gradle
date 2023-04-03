@@ -13,10 +13,9 @@ android {
         applicationId "com.kevin.courseApp"
         minSdk 21
         targetSdk 33
-        versionCode 6
-        versionName "1.00312"
+        versionCode 17
+        versionName "1.125"
         multiDexEnabled true
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -98,7 +97,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
 
 
-    implementation 'com.google.android.gms:play-services-auth:19.2.0'
 //navbar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 //admob

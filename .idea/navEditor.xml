@@ -48,6 +48,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_categoriasFragment_to_youtubeVideoDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -112,8 +117,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="292" />
-                            <option name="y" value="512" />
+                            <option name="x" value="247" />
+                            <option name="y" value="437" />
                           </Point>
                         </option>
                         <option name="myPositions">

@@ -35,7 +35,7 @@ class IntroFragment: Fragment() {
 
 
         if (!isFirstTime(requireContext())) {
-            findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
+            findNavController().navigate(R.id.action_introFragment2_to_loginFragment)
         }
 
 
@@ -72,9 +72,8 @@ class IntroFragment: Fragment() {
                     {    buttonNextPage.setImageResource(R.drawable.ic_done)
 
                         binding.buttonNextPage.setOnClickListener {
-                            findNavController().navigate(R.id.action_introFragment2_to_homeFragment)
+                            findNavController().navigate(R.id.action_introFragment2_to_loginFragment)
                         }
-
                     }
 
                     else -> buttonNextPage.setImageResource(R.drawable.ic_next)

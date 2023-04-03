@@ -15,16 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "106392319602-d9m4l0902ehac2custt2gsql4f7h9fa8.apps.googleusercontent.com",
+          "client_id": "106392319602-4lmjgs8gtit32iotrujcnraj4gmu3cq8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.kevin.courseApp",
-            "certificate_hash": "7708e444e14dc1fd84a7cc82ff71e14deb3439dd"
+            "certificate_hash": "c1c2ac41f844deade75d21c6e9eb7fa748a8236d"
           }
-        },
-        {
-          "client_id": "106392319602-956qok154u0itokd87je3ui5qrbisak0.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -34,12 +30,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "106392319602-4aucddjn7lkgn859hfvg2fa559vbv2gb.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

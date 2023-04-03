@@ -25,42 +25,59 @@ app:particleLinesEnabled="false"
                     app:particleColor="@color/teal_700"
                     />
 
-                        <androidx.appcompat.widget.Toolbar
+
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:id="@+id/toolbar"
-                            app:titleTextColor="@color/white"
-                            app:title="@string/app_name"
-                            android:layout_height="?actionBarSize"
-                            android:background="@color/colorPrimaryDark" />
+
+                            android:id="@+id/toolbar2"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                        <androidx.appcompat.widget.Toolbar
+                                            android:id="@+id/toolbar"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="?attr/actionBarSize"
+                                            android:background="?attr/colorPrimary">
+
+                                        </androidx.appcompat.widget.Toolbar>
+
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_centerVertical="true"
+                                            android:layout_marginRight="30dp"
+                                            android:id="@+id/imagenFav"
+                                            android:src="@drawable/ic_baseline_star_24"
+                                            android:layout_height="wrap_content">
+
+                                        </ImageView>
+
+
+
+                                </RelativeLayout>
+
+
+
+                        </LinearLayout>
 
 
 
 
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/slider2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/toolbar"
-                    app:cardCornerRadius="30dp">
 
-                        <com.denzcoskun.imageslider.ImageSlider
-                            android:id="@+id/image_slider"
-                            android:layout_width="match_parent"
-                            android:layout_height="170dp"
-                            app:iss_auto_cycle="true"
 
-                            app:iss_delay="0"
-                            app:iss_period="2000"
-                            app:iss_placeholder="@mipmap/ic_launcher" />
-
-                </androidx.cardview.widget.CardView>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view_cursos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/slider2"
+                    android:layout_below="@id/toolbar2"
                     android:layout_marginTop="0dp"
                     android:layout_marginBottom="50dp"
                     android:padding="16dp"

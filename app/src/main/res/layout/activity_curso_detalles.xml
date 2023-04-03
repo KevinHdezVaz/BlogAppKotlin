@@ -14,7 +14,6 @@
         app:particleMinRadius="3"
         app:particleMaxRadius="10"
         app:particleLinesEnabled="false"
-
         app:particlesBackgroundColor="@color/white"
         app:particleColor="@color/colorPrimary"
         />
@@ -187,6 +186,15 @@
         </androidx.cardview.widget.CardView>
 
 
+              <Button
+                  android:id="@+id/btnGuardar"
+                  android:layout_gravity="center"
+                  android:text="guardar"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  ></Button>
+
+
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -218,7 +226,7 @@
         <Button
         android:id="@+id/enlace_button"
         android:layout_width="wrap_content"
-
+android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
             android:layout_marginBottom="30dp"

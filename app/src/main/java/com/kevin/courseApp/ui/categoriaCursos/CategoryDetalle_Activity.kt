@@ -35,6 +35,7 @@ class CategoryDetalle_Activity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
         database = FirebaseDatabase.getInstance().reference
 
 
@@ -93,40 +94,9 @@ class CategoryDetalle_Activity : AppCompatActivity() {
             }
         })
         animacionProgress.mostrarCarga(this)
-        //HomeFragment.mostrarCarga(requireContext(), "loading.json")
+
 
     }
-
-
-
-
-
-    private fun searchCursos(titulo: String) {
-        val cursos = ArrayList<Cursos>()
-
-        val query = FirebaseDatabase.getInstance().reference.child("cursos")
-
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (cursoSnapshot in dataSnapshot.children) {
-                    val curso = cursoSnapshot.getValue(Cursos::class.java)
-                    if (curso != null && curso.titulo.contains(titulo,ignoreCase = true)) {
-                        cursos.add(curso)
-                    }
-                }
-
-
-                cursosAdapter.cursos = cursos
-                cursosAdapter.notifyDataSetChanged()
-
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w(ContentValues.TAG, "onCancelled", databaseError.toException())
-            }
-        })
-    }
-
 
 
 }
