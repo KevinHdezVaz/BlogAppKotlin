@@ -21,7 +21,8 @@ data class Cursos(
     val duracion:Int=0,
     val idioma:String="",
     val estudiantes:Double=0.0,
-    val certificado: Boolean = false
+    val certificado: Boolean = false,
+    val creador: String = ""
 )
     :Serializable
 

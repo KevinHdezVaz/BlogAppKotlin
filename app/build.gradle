@@ -8,13 +8,12 @@ plugins {
 android {
     namespace 'com.kevin.courseApp'
     compileSdk 33
-
     defaultConfig {
         applicationId "com.kevin.courseApp"
         minSdk 21
         targetSdk 33
-        versionCode 17
-        versionName "1.125"
+        versionCode 19
+        versionName "1.1256699"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -110,6 +109,8 @@ dependencies {
 
  //onesignal
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+//boton
+    implementation 'com.github.AbhinavChauhan97:LoaderChip:1.0.4'
 
 
 }

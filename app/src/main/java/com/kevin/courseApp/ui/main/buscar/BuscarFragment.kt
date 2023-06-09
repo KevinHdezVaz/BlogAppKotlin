@@ -120,6 +120,9 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
                     putExtra("duracion", curso.duracion)
                     putExtra("idioma", curso.idioma)
                     putExtra("estudiantes", curso.estudiantes)
+                    putExtra("imagenFondo", curso.imagenFondo)
+                    putExtra("empresa", curso.empresa)
+                    putExtra("creador", curso.creador)
                 }
                 startActivity(intent)
             }

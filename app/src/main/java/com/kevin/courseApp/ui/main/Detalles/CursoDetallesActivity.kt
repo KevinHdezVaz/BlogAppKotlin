@@ -2,12 +2,18 @@ package com.kevin.courseApp.ui.main.Detalles
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
+import androidx.core.content.ContextCompat
+import android.content.res.Configuration
+
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+ import com.bumptech.glide.Glide
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
@@ -18,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.kevin.courseApp.data.model.Cursos
 import com.kevin.courseApp.databinding.ActivityCursoDetallesBinding
+import io.grpc.InternalChannelz.id
 
 
 class CursoDetallesActivity : AppCompatActivity() {
@@ -80,6 +87,7 @@ class CursoDetallesActivity : AppCompatActivity() {
             val estudiantes = intent.getDoubleExtra("estudiantes",0.0)
             val fondo = intent.getStringExtra("imagenFondo")
             val empresa = intent.getStringExtra("empresa")
+            val creador = intent.getStringExtra("creador")
 
             val curso = Cursos(
                 titulo = titulo!!,
@@ -91,7 +99,8 @@ class CursoDetallesActivity : AppCompatActivity() {
                 idioma = idioma!!,
                 estudiantes = estudiantes,
                 imagenFondo = fondo!!,
-                empresa = empresa!!
+                empresa = empresa!!,
+                 creador = creador!!
 
 
             )
@@ -117,13 +126,11 @@ class CursoDetallesActivity : AppCompatActivity() {
 
 
 
-
-
         var adRequest = AdRequest.Builder().build()
         //original
         //ca-app-pub-5486388630970825/8955067655
         //test - ca-app-pub-3940256099942544/5224354917
-        RewardedAd.load(this,"ca-app-pub-5486388630970825/8955067655", adRequest, object : RewardedAdLoadCallback() {
+        RewardedAd.load(this,"ca-app-pub-3940256099942544/5224354917", adRequest, object : RewardedAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                  rewardedAd = null
                 binding.enlaceButton.isEnabled = false
@@ -142,7 +149,6 @@ class CursoDetallesActivity : AppCompatActivity() {
 
         // Obtener los datos del curso desde el intent
         val titulo = intent.getStringExtra("titulo")
-
         val descripcion = intent.getStringExtra("descripcion")
         val imagenUrl = intent.getStringExtra("imagenUrl")
         val enlace = intent.getStringExtra("enlace")
@@ -150,9 +156,19 @@ class CursoDetallesActivity : AppCompatActivity() {
         val duracion = intent.getIntExtra("duracion",0)
         val idioma = intent.getStringExtra("idioma")
         val estudiantes = intent.getDoubleExtra("estudiantes",0.0)
+        val creador = intent.getStringExtra("creador")
 
 
         // Mostrar los datos del curso en la vista
+        if(creador.isNullOrEmpty()){
+            binding.creadorCurso.visibility = View.GONE
+        }
+        val text = "<b>Creador del contenido:</b> ${creador ?: ""}"
+
+        binding.creadorCurso.text = Html.fromHtml(text)
+
+
+
         binding.tituloCurso.text = titulo
         binding.ratingBar.rating = valoracion.toFloat()
         binding.txtDuracion.text = "$duracion horas"
@@ -229,7 +245,8 @@ class CursoDetallesActivity : AppCompatActivity() {
             "duracion" to curso.duracion,
             "idioma" to curso.idioma,
             "estudiantes" to curso.estudiantes,
-            "certificado" to curso.certificado
+            "certificado" to curso.certificado,
+            "creador" to curso.creador
         )
 
         // Generar una clave única para el nodo del curso en la base de datos

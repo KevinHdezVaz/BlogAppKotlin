@@ -13,6 +13,16 @@
     <color name="md_black_1000">#000000</color>
     <color name="md_grey_100">#F5F5F5</color>
     <color name="md_blue_100">#BBDEFB</color>
+    <color name="colorParticulas">#FBFBFB</color>
+    <color name="black_white">#000000</color>
+    <color name="colortoolbar">#2196f3</color>
 
+    <color name="fondoazul">#2196f3</color>
+
+    <color name="colorTutorial">#3089CF</color>
+
+    <color name="purple_200">#545455</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#2B2B2C</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

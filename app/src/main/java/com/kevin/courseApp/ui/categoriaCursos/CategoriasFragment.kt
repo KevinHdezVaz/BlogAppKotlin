@@ -65,7 +65,7 @@ class CategoriasFragment : Fragment() {
             Categoria(R.drawable.ingenieria, "Ingeniería", "scx"),
              Categoria(R.drawable.amor, "Humanidades", "huma"),
             Categoria(R.drawable.arte, "Arte", "humca"),
-
+            Categoria(R.drawable.pensar, "Ciencias exactas", "ciencia"),
 
             )
 
@@ -94,6 +94,7 @@ class CategoriasFragment : Fragment() {
                 6 -> bundle.putString("categoria", "Ingeniería")
                 7 -> bundle.putString("categoria", "Humanidades")
                 8 -> bundle.putString("categoria", "Arte")
+                9 -> bundle.putString("categoria", "Ciencias")
             }
              findNavController().navigate(R.id.action_categoriasFragment_to_categoria_Detalles, bundle)
 

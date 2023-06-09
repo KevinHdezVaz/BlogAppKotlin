@@ -3,6 +3,7 @@ package com.kevin.courseApp.ui.auth
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -57,6 +58,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         isUserLoggin()
         duLogin()
         GotosignUp()
+
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            binding.relativobro.setBackgroundResource(R.drawable.fondogris)
+            binding.contraintbro.setBackgroundResource(R.drawable.fondogris)
+
+        } else {
+            binding.relativobro.setBackgroundResource(R.drawable.grande)
+            binding.contraintbro.setBackgroundResource(R.drawable.grande)
+        }
+
+
+
+
 
         binding.textoaRegistro.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)

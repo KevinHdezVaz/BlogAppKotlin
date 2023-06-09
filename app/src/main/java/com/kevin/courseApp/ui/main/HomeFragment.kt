@@ -117,6 +117,7 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                         putExtra("estudiantes", curso.estudiantes)
                         putExtra("imagenFondo", curso.imagenFondo)
                         putExtra("empresa", curso.empresa)
+                        putExtra("creador", curso.creador)
                     }
                     startActivity(intent)
                 }

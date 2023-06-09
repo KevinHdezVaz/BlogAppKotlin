@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
-    android:orientation="vertical"
-
+     android:orientation="vertical"
     android:layout_gravity="center"
     >
 
@@ -28,7 +27,7 @@
         android:layout_below="@id/animacionLottie"
         android:layout_alignParentStart="true"
         android:layout_marginTop="34dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorTutorial"
         android:layout_gravity="center"
         android:gravity="center"
 android:layout_margin="20dp"
@@ -40,7 +39,7 @@ android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:layout_marginTop="8dp"
-        android:textColor="@color/black"
+        android:textColor="@color/black_white"
 android:fontFamily="@font/muli_semibold"
         android:layout_margin="30dp"
         android:id="@+id/descriptionTexto"

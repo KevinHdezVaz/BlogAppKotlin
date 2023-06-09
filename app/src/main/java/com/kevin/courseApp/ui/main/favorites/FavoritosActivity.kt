@@ -93,7 +93,9 @@ class FavoritosActivity : AppCompatActivity() {
                     putExtra("duracion", curso.duracion)
                     putExtra("idioma", curso.idioma)
                     putExtra("estudiantes", curso.estudiantes)
-                   // putExtra("empresa", curso.empresa)
+                    putExtra("imagenFondo", curso.imagenFondo)
+                    putExtra("empresa", curso.empresa)
+                    putExtra("creador", curso.creador)
 
                 }
                 startActivity(intent)

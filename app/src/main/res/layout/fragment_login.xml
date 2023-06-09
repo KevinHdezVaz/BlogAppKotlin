@@ -4,8 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/grande"
     android:layout_width="match_parent"
+    android:id="@+id/relativobro"
     android:layout_height="match_parent"
     >
+    <me.ibrahimsn.particle.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:particleCount="110"
+        app:particleMinRadius="5"
+        app:particleMaxRadius="17"
+        app:particleLinesEnabled="false"
+        app:particlesBackgroundColor="@color/colorParticulas"
+        app:particleColor="@color/teal_700"
+        />
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
@@ -38,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:background="@drawable/grande"
                     android:layout_height="match_parent"
+                    android:id="@+id/contraintbro"
                     >
 
 
@@ -57,9 +71,9 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="50dp"
                         android:fontFamily="@font/indigo_daisy"
-                        android:text="Login"
+                        android:text="SaberApp"
 
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_white"
                         android:textSize="55sp" />
 
 
@@ -74,7 +88,7 @@
                         android:hint="Email"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:background="@drawable/border"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/black_white"
 
                         >
 
@@ -86,7 +100,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
 
-                            android:textColor="@color/black">
+                            android:textColor="@color/black_white">
 
                         </com.google.android.material.textfield.TextInputEditText>
 
@@ -111,7 +125,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="30dp"
 
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/black_white"
                         android:hint="Contraseña"
                         android:background="@drawable/border"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -123,12 +137,28 @@
 
 
                             android:id="@+id/editTextPassword"
-                            android:textColor="@color/black"
+                            android:textColor="@color/black_white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword">
 
                         </com.google.android.material.textfield.TextInputEditText>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <ProgressBar
+                                android:id="@+id/progresBar"
+                                android:layout_width="100dp"
+                                android:layout_height="150dp"
+                                android:visibility="gone">
+
+                            </ProgressBar>
+
+
+                        </RelativeLayout>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,7 +225,7 @@
                             android:textStyle="bold"
 android:id="@+id/textoaRegistro"
                             android:text="No tienes cuenta? CLICK AQUI"
-                            android:textColor="@color/black"
+                            android:textColor="@color/black_white"
                             android:textSize="14sp" />
 
                         <ImageView
@@ -215,23 +245,6 @@ android:id="@+id/textoaRegistro"
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        >
-
-        <ProgressBar
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            android:id="@+id/progresBar"
-            android:visibility="gone"
-        >
-
-        </ProgressBar>
-
-
-    </RelativeLayout>
 
 
 </RelativeLayout>

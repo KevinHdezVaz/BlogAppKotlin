@@ -58,7 +58,7 @@
         app:particleMinRadius="5"
         app:particleMaxRadius="10"
         app:particleLinesEnabled="false"
-        app:particlesBackgroundColor="@color/white"
+        app:particlesBackgroundColor="@color/colorParticulas"
         app:particleColor="@color/colorPrimaryDark"
         />
 

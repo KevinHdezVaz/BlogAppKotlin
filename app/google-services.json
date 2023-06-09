@@ -1,36 +1,44 @@
 {
   "project_info": {
-    "project_number": "106392319602",
-    "firebase_url": "https://cursoapp-36629-default-rtdb.firebaseio.com",
-    "project_id": "cursoapp-36629",
-    "storage_bucket": "cursoapp-36629.appspot.com"
+    "project_number": "294704100796",
+    "project_id": "cursoapp-pruebas",
+    "storage_bucket": "cursoapp-pruebas.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:106392319602:android:4c743d87b351f3b23cb4eb",
+        "mobilesdk_app_id": "1:294704100796:android:33730b2c6bc3d14c0d27b9",
         "android_client_info": {
           "package_name": "com.kevin.courseApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "106392319602-4lmjgs8gtit32iotrujcnraj4gmu3cq8.apps.googleusercontent.com",
+          "client_id": "294704100796-etbh1ut39pd8euld62ji34n8hoiqn4vu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.kevin.courseApp",
-            "certificate_hash": "c1c2ac41f844deade75d21c6e9eb7fa748a8236d"
+            "package_name": "com.kevin.pruebas",
+            "certificate_hash": "be14a2786365de198174c8c360464357487df115"
           }
+        },
+        {
+          "client_id": "294704100796-kp1gj9rrgeva1j5kp0p6k8gj4mjak6e5.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBgPvDeoiEzmbLiGQ69my2PykX3U7keEEc"
+          "current_key": "AIzaSyDqXJRHoss7xzOK8se0fM5CthYL7awuZBs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294704100796-kp1gj9rrgeva1j5kp0p6k8gj4mjak6e5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

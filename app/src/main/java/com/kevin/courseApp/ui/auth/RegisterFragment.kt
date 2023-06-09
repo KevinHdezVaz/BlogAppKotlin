@@ -1,6 +1,7 @@
 package com.kevin.courseApp.ui.auth
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -37,6 +38,16 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         super.onViewCreated(view, savedInstanceState)
         getSignUp()
 
+
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            binding.relatiRegi.setBackgroundResource(R.drawable.fondogris)
+            binding.contraRegi.setBackgroundResource(R.drawable.fondogris)
+
+        } else {
+            binding.relatiRegi.setBackgroundResource(R.drawable.grande)
+            binding.contraRegi.setBackgroundResource(R.drawable.grande)
+        }
 
     }
 

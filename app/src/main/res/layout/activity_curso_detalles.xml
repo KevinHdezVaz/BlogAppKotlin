@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorParticulas"
    android:padding="15dp"
  >
 
@@ -14,7 +15,7 @@
         app:particleMinRadius="3"
         app:particleMaxRadius="10"
         app:particleLinesEnabled="false"
-        app:particlesBackgroundColor="@color/white"
+        app:particlesBackgroundColor="@color/colorParticulas"
         app:particleColor="@color/colorPrimary"
         />
 
@@ -42,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:textColor="@color/black"
+        android:textColor="@color/black_white"
         android:layout_marginTop="16dp"
         android:textStyle="bold" />
 
@@ -50,11 +51,22 @@
         android:id="@+id/descripcion_curso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/black_white"
         android:textSize="15dp"
         android:layout_margin="10dp"
 
         android:layout_marginTop="8dp" />
+
+
+        <TextView
+            android:id="@+id/creador_curso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15dp"
+            android:layout_marginHorizontal="30dp"
+            android:text="Creador del contenido: Aprender francés con Judy"
+            android:layout_marginTop="10dp" />
 
         <androidx.cardview.widget.CardView
            android:layout_margin="20dp"
@@ -75,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Valoración: "
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_white"
                     android:textStyle="bold"/>
 
                 <RatingBar
@@ -102,7 +114,7 @@
                         ></ImageView>
                     <TextView
                         android:layout_width="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_white"
                         android:layout_height="wrap_content"
 
                    android:layout_gravity="center"
@@ -116,7 +128,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:textSize="15dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_white"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtDuracion"
                     android:text="es" />
@@ -139,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="  Idioma: "
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_white"
                     android:textSize="15dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -148,7 +160,7 @@
                     android:id="@+id/txtIdioma"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_white"
                     android:text="es" />
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -164,7 +176,7 @@
                     android:layout_height="20dp"
                     ></ImageView>
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -176,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:textSize="15dp"
 
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_white"
                     android:id="@+id/txtEstudiantes"
                     android:layout_height="wrap_content"
                     android:text="sd" />
@@ -184,13 +196,13 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-
               <Button
                   android:id="@+id/btnGuardar"
-                  android:layout_gravity="center"
-                  android:text="guardar"
-                  android:layout_width="wrap_content"
+                  android:textColor="@color/white"
+                   android:layout_gravity="center"
+                    android:text="guardar"
+                   android:layout_width="wrap_content"
+                  android:backgroundTint="@color/fondoazul"
                   android:layout_height="wrap_content"
                   ></Button>
 
@@ -204,7 +216,7 @@
     >
     <TextView
         android:layout_width="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/black_white"
         android:layout_height="wrap_content"
         android:text="El curso esta cargando, espera a que el boton se ponga en azul para entrar. :)"
         android:padding="15dp"
@@ -226,12 +238,15 @@
         <Button
         android:id="@+id/enlace_button"
         android:layout_width="wrap_content"
-android:enabled="false"
+             android:enabled="false"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+            android:textColor="@color/white"
             android:layout_marginBottom="30dp"
-        android:text="ENTRAR AL CURSO"
+        android:text="➡️  ENTRAR AL CURSO  ⬅️"
         android:layout_marginTop="24dp" />
+
+
 
     </LinearLayout>
 

@@ -324,7 +324,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/star/baseline_star_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/light_mode/baseline_light_mode_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -335,7 +335,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_baseline_star_24" />
+                            <entry key="outputName" value="ic_baseline_light_mode_24" />
                           </map>
                         </option>
                       </PersistentState>

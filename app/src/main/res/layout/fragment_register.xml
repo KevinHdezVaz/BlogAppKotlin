@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/grande"
     android:layout_width="match_parent"
+    android:id="@+id/relatiRegi"
     android:layout_height="match_parent">
 
-
+    <me.ibrahimsn.particle.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:particleCount="110"
+        app:particleMinRadius="5"
+        app:particleMaxRadius="17"
+        app:particleLinesEnabled="false"
+        app:particlesBackgroundColor="@color/colorParticulas"
+        app:particleColor="@color/teal_700"
+        />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
@@ -38,6 +49,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/contraRegi"
                     android:background="@drawable/grande"
                     android:layout_height="match_parent"
                     >
@@ -67,7 +79,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/indigo_daisy"
                         android:text="Registro"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_white"
                         android:textSize="45sp" />
 
 
@@ -82,7 +94,7 @@
                         android:hint="Usuario"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:background="@drawable/border"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/black_white"
 
                         >
 
@@ -93,7 +105,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
 
-                            android:textColor="@color/black">
+                            android:textColor="@color/black_white">
 
                         </com.google.android.material.textfield.TextInputEditText>
 
@@ -109,7 +121,7 @@
                         android:hint="Email"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:background="@drawable/border"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/black_white"
 
                         >
 
@@ -120,7 +132,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
 
-                            android:textColor="@color/black">
+                            android:textColor="@color/black_white">
 
                         </com.google.android.material.textfield.TextInputEditText>
 
@@ -137,7 +149,7 @@
                         android:hint="Contraseña"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:background="@drawable/border"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/black_white"
                         app:passwordToggleEnabled="true"
 
                         >
@@ -150,7 +162,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
 
-                            android:textColor="@color/black">
+                            android:textColor="@color/black_white">
 
                         </com.google.android.material.textfield.TextInputEditText>
 
@@ -166,7 +178,7 @@
                         android:hint="Confirmar Contraseña"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:background="@drawable/border"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/black_white"
                         app:passwordToggleEnabled="true"
 
                         >

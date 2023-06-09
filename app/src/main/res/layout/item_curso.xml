@@ -14,9 +14,9 @@ android:layout_marginTop="20dp"
     <ImageView
         android:layout_width="match_parent"
         android:id="@+id/fondoo"
- android:scaleType="centerCrop"
-        android:layout_height="match_parent"
-        ></ImageView>
+        android:src="@drawable/cargando"
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent" />
 
 
 <LinearLayout
@@ -78,6 +78,8 @@ android:layout_marginTop="20dp"
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/imagenArriba"
+        android:src="@drawable/cargando"
+
         android:layout_height="match_parent"
         >
 
