@@ -44,6 +44,18 @@ class HomeScreenViewModel(private val repo: CursosRepo): ViewModel() {
             emit( Result.Failure(Exception(it.message)))
         }
     }
+
+    fun getCoursesNew() = liveData (Dispatchers.IO){
+        emit(Result.Loading())
+        kotlin.runCatching {
+            repo.getCoursesNew()
+        }.onSuccess {
+            emit(it)
+
+        }.onFailure {
+            emit( Result.Failure(Exception(it.message)))
+        }
+    }
 }
 
 class HomeScreenViewModelFactory(private val repo: CursosRepo) : ViewModelProvider.Factory {

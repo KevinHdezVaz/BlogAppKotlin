@@ -29,6 +29,28 @@ class CursosDataSource {
         }
     }
 
+    suspend fun getLatestCoursesDataSource(limit: Int): Result<List<Cursos>> {
+        val postList = mutableListOf<Cursos>()
+        try {
+            val dataSnapshot = FirebaseDatabase.getInstance().reference
+                .child("cursos")
+                .orderByKey()
+                .limitToLast(limit)
+                .get()
+                .await()
+
+            for (postSnapshot in dataSnapshot.children.reversed()) {
+                val curso = postSnapshot.getValue(Cursos::class.java)
+                curso?.let { postList.add(it) }
+            }
+
+            return Result.Success(postList)
+        } catch (e: Exception) {
+            return Result.Failure(e)
+        }
+    }
+
+
 
     suspend fun getFavDatasource(): Result<List<Cursos>> {
         val postList = mutableListOf<Cursos>()

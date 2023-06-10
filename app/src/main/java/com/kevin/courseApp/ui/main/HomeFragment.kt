@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -30,6 +31,7 @@ import com.kevin.courseApp.MainActivity
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.Result
 import com.kevin.courseApp.core.adapterCurso.CursosAdapter
+import com.kevin.courseApp.core.adapterCurso.CursosAdapterNews
 import com.kevin.courseApp.data.model.Cursos
 import com.kevin.courseApp.data.remote.home.CursosDataSource
 import com.kevin.courseApp.databinding.FragmentHomeBinding
@@ -40,21 +42,38 @@ import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
 import com.kevin.courseApp.ui.main.favorites.FavoritosActivity
 import com.kevin.courseApp.utils.animacionProgress
 import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
+import com.kevin.courseApp.utils.quotes
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment(R.layout.fragment_home)   {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var cursosAdapter: CursosAdapter
+    private lateinit var cursosAdapternew: CursosAdapterNews
+
     var epicDialog2: Dialog? = null
     var epicDialogTErminos: Dialog? = null
     private lateinit var viewModel: HomeScreenViewModel
+    private lateinit var viewModelnews: HomeScreenViewModel
+
     var seguir: Button? = null
+    private var currentIndex = 0
+    private val delayMillis = 8000L // Intervalo de cambio en milisegundos
+
+    private val handler = Handler()
+    private val runnable = Runnable {
+        showNextQuote()
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
+
+        mostrarCitas()
 
 //para salir
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -69,9 +88,18 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
 
         cursosAdapter = CursosAdapter(listOf())
+        cursosAdapternew = CursosAdapterNews(listOf())
+
         binding.recyclerViewCursos.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = cursosAdapter
+        }
+
+
+        binding.recyclerViewCursosAgregadosReciente.apply {
+            layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL,false)
+            adapter = cursosAdapternew
         }
 
 
@@ -82,9 +110,13 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
             HomeScreenViewModelFactory(CursosImplement(CursosDataSource()))
         )[HomeScreenViewModel::class.java]
 
+        viewModelnews = ViewModelProvider(
+            this,
+            HomeScreenViewModelFactory(CursosImplement(CursosDataSource()))
+        )[HomeScreenViewModel::class.java]
+
         imagenesCarousel()
         hamburgesa()
-
 
         viewModel.getCursos().observe(viewLifecycleOwner) { result ->
             when (result) {
@@ -92,17 +124,33 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                     val cursos = result.data
                     cursosAdapter.cursos = cursos
                     cursosAdapter.notifyDataSetChanged()
-                     esconderCarga()
+                    esconderCarga()
 
                 }
                 is Result.Failure -> {
-                     esconderCarga()
-
+                    esconderCarga()
                     Log.e(TAG, "Error al obtener cursos", result.exception)
                 }
                 else -> {}
             }
         }
+        viewModelnews.getCoursesNew().observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Success -> {
+                    val cursos = result.data
+                    cursosAdapternew.cursos = cursos
+                    cursosAdapternew.notifyDataSetChanged()
+                    esconderCarga()
+
+                }
+                is Result.Failure -> {
+                    esconderCarga()
+                    Log.e(TAG, "Error al obtener cursos", result.exception)
+                }
+                else -> {}
+            }
+        }
+
 
             cursosAdapter.setOnItemClickListener(object : CursosAdapter.OnItemClickListener {
                 override fun onItemClick(curso: Cursos) {
@@ -127,6 +175,32 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
     }
 
+    private fun mostrarCitas() {
+        startQuoteRotation()
+
+    }
+    private fun startQuoteRotation() {
+        handler.postDelayed(runnable, delayMillis)
+    }
+
+
+    private fun showNextQuote() {
+        val quotes = quotes()
+        val random = Random()
+        val randomIndex = random.nextInt(quotes.quotesList.size)
+        binding.textQuote.text = quotes.quotesList[randomIndex]
+        handler.removeCallbacks(runnable)
+        handler.postDelayed(runnable, delayMillis)
+    }
+
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Detener la rotación de citas al destruir la actividad
+        handler.removeCallbacks(runnable)
+    }
     private fun fragmentFav() {
 
         val intent = Intent(activity, FavoritosActivity::class.java)
