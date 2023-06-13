@@ -8,6 +8,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="allCoursesFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="706" />
+                            <option name="y" value="-79" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="buscarFragment">
                     <value>
                       <LayoutPositions>
@@ -75,12 +87,17 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="852" />
-                            <option name="y" value="642" />
+                            <option name="x" value="850" />
+                            <option name="y" value="755" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_homeFragment_to_allCoursesFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_homeFragment_to_loginFragment">
                               <value>
                                 <LayoutPositions />
@@ -102,7 +119,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_introFragment2_to_homeFragment">
+                            <entry key="action_introFragment2_to_loginFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -134,6 +151,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="masEstudianteFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="401" />
+                            <option name="y" value="1094" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

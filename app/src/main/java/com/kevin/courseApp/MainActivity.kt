@@ -53,6 +53,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.registerFragment -> {
                     binding.bottomBar.hide()
                 }
+                R.id.masEstudianteFragment -> {
+                    binding.bottomBar.hide()
+                }
+                R.id.allCoursesFragment -> {
+                    binding.bottomBar.hide()
+                }
+
                 R.id.categoria_Detalles -> {
                     binding.bottomBar.hide()
                 }

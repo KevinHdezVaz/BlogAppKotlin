@@ -22,6 +22,17 @@ class HomeScreenViewModel(private val repo: CursosRepo): ViewModel() {
         }
     }
 
+    fun getCursosAll() = liveData (Dispatchers.IO){
+        emit(Result.Loading())
+        kotlin.runCatching {
+            repo.getCourseAll()
+        }.onSuccess {
+            emit(it)
+
+        }.onFailure {
+            emit( Result.Failure(Exception(it.message)))
+        }
+    }
     fun getCursosFiltrados(categoria : String) = liveData (Dispatchers.IO){
         emit(Result.Loading())
         kotlin.runCatching {

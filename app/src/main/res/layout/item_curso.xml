@@ -3,17 +3,20 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
- android:id="@+id/cardview"
+  android:id="@+id/cardview"
      app:cardElevation="10dp"
     app:cardCornerRadius="30dp"
-    android:layout_height="120dp"
+    android:layout_width="270dp"
+    android:layout_marginRight="20dp"
+
+    android:layout_height="100dp"
 android:layout_marginTop="20dp"
     android:padding="8dp">
 
     <ImageView
         android:layout_width="match_parent"
         android:id="@+id/fondoo"
+        android:background="@drawable/cargando"
         android:src="@drawable/cargando"
         android:scaleType="centerCrop"
         android:layout_height="match_parent" />
@@ -53,24 +56,12 @@ android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Título del curso"
-            android:layout_marginTop="20dp"
-            android:textSize="18sp"
+             android:textSize="18sp"
             android:textStyle="bold"
 
     />
 
 
-        <TextView
-            android:id="@+id/categoria_curso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CATEGORIA"
-            android:textColor="@color/white"
-
-            android:textSize="16sp"
-            >
-
-        </TextView>
     </LinearLayout>
 
 

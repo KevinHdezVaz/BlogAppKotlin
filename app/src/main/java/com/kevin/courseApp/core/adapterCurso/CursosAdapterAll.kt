@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kevin.courseApp.R
 import com.kevin.courseApp.data.model.Cursos
-import com.kevin.courseApp.databinding.ItemCursoBinding
-import com.kevin.courseApp.databinding.ItemCursonewBinding
+ import com.kevin.courseApp.databinding.ItemCursoBinding
+import com.kevin.courseApp.databinding.ItemCursoallBinding
 import com.squareup.picasso.Picasso
-class CursosAdapterNews(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapterNews.CursoViewHoldernew>() {
+class CursosAdapterAll(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosAdapterAll.CursoViewHolderAll>() {
+
+    private val ITEM_VIEW_TYPE_COURSE = 0
+    private val ITEM_VIEW_TYPE_AD = 1
 
     private var listener: OnItemClickListener? = null
 
@@ -27,17 +30,18 @@ class CursosAdapterNews(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosA
     }
 
 
- override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CursoViewHoldernew {
-        val binding = ItemCursonewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CursoViewHoldernew(binding)
+ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CursoViewHolderAll {
+        val binding = ItemCursoallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CursoViewHolderAll(binding)
     }
 
 
 
 
-    override fun onBindViewHolder(holder: CursoViewHoldernew, position: Int) {
+    override fun onBindViewHolder(holder: CursoViewHolderAll, position: Int) {
          val curso = cursos[position]
          holder.bind(curso)
+
 
 
         holder.itemView.setOnClickListener {
@@ -47,17 +51,28 @@ class CursosAdapterNews(var cursos: List<Cursos>) : RecyclerView.Adapter<CursosA
 
 
 
+
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position % 5 == 0) {
+            ITEM_VIEW_TYPE_AD
+        } else {
+            ITEM_VIEW_TYPE_COURSE
+        }
+    }
+
     override fun getItemCount(): Int {
         return cursos.size
     }
 
-    inner class CursoViewHoldernew(private val binding: ItemCursonewBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CursoViewHolderAll(private val binding: ItemCursoallBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(curso: Cursos) {
 
 
 
             binding.tituloTextView.text = curso.titulo
-             Glide.with(itemView.context).load(curso.imagenUrl).into(binding.imagenImageView)
+            binding.categoriaCurso.text = curso.empresa
+            Glide.with(itemView.context).load(curso.imagenUrl).into(binding.imagenImageView)
             Glide.with(itemView.context).load(curso.imagenFondo).into(binding.fondoo)
 
 

@@ -11,15 +11,17 @@ import kotlinx.coroutines.withContext
 
 class CursosDataSource {
 
-    suspend fun getCursosDataSource(): Result<List<Cursos>> {
+
+    suspend fun getCursosDataSourceAll(): Result<List<Cursos>> {
         val postList = mutableListOf<Cursos>()
         try {
-            val dataSnapshot = FirebaseDatabase.getInstance().reference.child("cursos").get().await()
+            val dataSnapshot = FirebaseDatabase.getInstance().reference.child("cursos")
+                .get().await()
             for (postSnapshot in dataSnapshot.children) {
                 val curso = postSnapshot.getValue(Cursos::class.java)
 
                 curso?.let { postList.add(it) }
-               postList.sortBy { it.titulo }
+                postList.sortBy { it.titulo }
 
             }
 
@@ -29,20 +31,40 @@ class CursosDataSource {
         }
     }
 
-    suspend fun getLatestCoursesDataSource(limit: Int): Result<List<Cursos>> {
+    suspend fun getCursosDataSource( ): Result<List<Cursos>> {
         val postList = mutableListOf<Cursos>()
         try {
-            val dataSnapshot = FirebaseDatabase.getInstance().reference
-                .child("cursos")
-                .orderByKey()
-                .limitToLast(limit)
-                .get()
-                .await()
+            val dataSnapshot = FirebaseDatabase.getInstance().reference.child("cursos")
 
-            for (postSnapshot in dataSnapshot.children.reversed()) {
+                .get().await()
+
+            for (postSnapshot in dataSnapshot.children) {
+                val curso = postSnapshot.getValue(Cursos::class.java)
+                curso?.let { postList.add(it) }
+                postList.sortBy { it.titulo }
+            }
+
+            return Result.Success(postList)
+        } catch (e: Exception) {
+            return Result.Failure(e)
+        }
+    }
+
+
+    suspend fun getLatestCoursesDataSource( ): Result<List<Cursos>> {
+        val postList = mutableListOf<Cursos>()
+        try {
+            val dataSnapshot = FirebaseDatabase.getInstance().reference.
+            child("cursos")
+
+                .get().await()
+            for (postSnapshot in dataSnapshot.children) {
                 val curso = postSnapshot.getValue(Cursos::class.java)
                 curso?.let { postList.add(it) }
             }
+            // Ordenar los cursos por el campo "estudiantes" de manera descendente
+            postList.sortByDescending { it.estudiantes }
+
 
             return Result.Success(postList)
         } catch (e: Exception) {

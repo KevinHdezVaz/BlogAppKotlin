@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.widget.Adapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -30,9 +31,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.kevin.courseApp.MainActivity
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.Result
+import com.kevin.courseApp.core.adapterCurso.AdapterTools
 import com.kevin.courseApp.core.adapterCurso.CursosAdapter
 import com.kevin.courseApp.core.adapterCurso.CursosAdapterNews
 import com.kevin.courseApp.data.model.Cursos
+import com.kevin.courseApp.data.model.Item
 import com.kevin.courseApp.data.remote.home.CursosDataSource
 import com.kevin.courseApp.databinding.FragmentHomeBinding
 import com.kevin.courseApp.domain.home.CursosImplement
@@ -51,6 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var cursosAdapter: CursosAdapter
     private lateinit var cursosAdapternew: CursosAdapterNews
+    private lateinit var cursoTools: AdapterTools
 
     var epicDialog2: Dialog? = null
     var epicDialogTErminos: Dialog? = null
@@ -74,6 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
 
         mostrarCitas()
+        esconderTextos()
 
 //para salir
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -89,9 +94,46 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
         cursosAdapter = CursosAdapter(listOf())
         cursosAdapternew = CursosAdapterNews(listOf())
+        cursoTools = AdapterTools()
+
+
+        //agregar esa vaina al adaptadro
+
+
+        binding.recyclerviewChatgpt.apply {
+            layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL,false)
+            adapter = cursoTools
+        }
+
+
+        // Agregar datos de ejemplo
+        val item1 = Item(  R.drawable.herramienta )
+        val item2 = Item(  R.drawable.herramienta2 )
+        val item3 = Item(  R.drawable.ingenieria )
+        cursoTools.addItem(item1)
+        cursoTools.addItem(item2)
+        cursoTools.addItem(item3)
+
+
+
+        //send to all courses
+        binding.texto4.setOnClickListener{
+
+            findNavController().navigate(R.id.action_homeFragment_to_allCoursesFragment)
+
+        }
+        binding.texto5.setOnClickListener{
+
+            findNavController().navigate(R.id.action_homeFragment_to_masEstudianteFragment)
+
+        }
+
 
         binding.recyclerViewCursos.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = LinearLayoutManager(requireContext(),
+                LinearLayoutManager.HORIZONTAL,false)
+
             adapter = cursosAdapter
         }
 
@@ -125,10 +167,12 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                     cursosAdapter.cursos = cursos
                     cursosAdapter.notifyDataSetChanged()
                     esconderCarga()
+                    mostrarTextos()
 
                 }
                 is Result.Failure -> {
                     esconderCarga()
+
                     Log.e(TAG, "Error al obtener cursos", result.exception)
                 }
                 else -> {}
@@ -140,16 +184,18 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                     val cursos = result.data
                     cursosAdapternew.cursos = cursos
                     cursosAdapternew.notifyDataSetChanged()
-                    esconderCarga()
+                    // esconderCarga()
 
                 }
                 is Result.Failure -> {
-                    esconderCarga()
+                    // esconderCarga()
                     Log.e(TAG, "Error al obtener cursos", result.exception)
                 }
                 else -> {}
             }
         }
+
+        //adpatador de herrramientas
 
 
             cursosAdapter.setOnItemClickListener(object : CursosAdapter.OnItemClickListener {
@@ -171,9 +217,50 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
                 }
             })
 
+        cursosAdapternew.setOnItemClickListener(object : CursosAdapterNews.OnItemClickListener {
+            override fun onItemClick(curso: Cursos) {
+                val intent = Intent(activity, CursoDetallesActivity::class.java).apply {
+                    putExtra("titulo", curso.titulo)
+                    putExtra("descripcion", curso.descripcion)
+                    putExtra("imagenUrl", curso.imagenUrl)
+                    putExtra("enlace", curso.enlace)
+                    putExtra("valoracion", curso.valoracion)
+                    putExtra("duracion", curso.duracion)
+                    putExtra("idioma", curso.idioma)
+                    putExtra("estudiantes", curso.estudiantes)
+                    putExtra("imagenFondo", curso.imagenFondo)
+                    putExtra("empresa", curso.empresa)
+                    putExtra("creador", curso.creador)
+                }
+                startActivity(intent)
+            }
+        })
+
+
         animacionProgress.mostrarCarga(requireContext() )
 
     }
+
+    private fun esconderTextos() {
+
+        binding.texto1.visibility = View.GONE
+        binding.texto2.visibility= View.GONE
+        binding.texto3.visibility = View.GONE
+        binding.texto4.visibility = View.GONE
+        binding.texto5.visibility = View.GONE
+        binding.recyclerviewChatgpt.visibility = View.GONE
+    }
+
+    private fun mostrarTextos() {
+
+        binding.texto1.visibility = View.VISIBLE
+        binding.texto2.visibility= View.VISIBLE
+        binding.texto3.visibility = View.VISIBLE
+        binding.texto4.visibility = View.VISIBLE
+        binding.recyclerviewChatgpt.visibility = View.VISIBLE
+        binding.texto5.visibility = View.VISIBLE
+    }
+
 
     private fun mostrarCitas() {
         startQuoteRotation()

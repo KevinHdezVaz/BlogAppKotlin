@@ -12,6 +12,7 @@ interface CursosRepo
 
     suspend fun getFavoritos():  Result<List<Cursos>>
     suspend fun getCoursesNew():  Result<List<Cursos>>
+    suspend fun getCourseAll():  Result<List<Cursos>>
 
     suspend fun getCursoFiltrado(category: String):  Result<List<Cursos>>
 }

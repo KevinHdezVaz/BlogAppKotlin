@@ -5,31 +5,34 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+        <me.ibrahimsn.particle.ParticleView
+            android:id="@+id/particleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:particleCount="90"
+            app:particleMinRadius="5"
+            app:particleMaxRadius="10"
+            app:particleLinesEnabled="false"
+            app:particlesBackgroundColor="@color/colorParticulas"
+            app:particleColor="@color/teal_700"
+            />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginBottom="90dp"
+            android:layout_height="match_parent">
 
         <!-- Contenido principal de tu fragment -->
         <RelativeLayout
             android:layout_width="match_parent"
-
             android:layout_height="match_parent">
 
-
-                <me.ibrahimsn.particle.ParticleView
-                    android:id="@+id/particleView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:particleCount="90"
-                    app:particleMinRadius="5"
-                    app:particleMaxRadius="10"
-app:particleLinesEnabled="false"
-                    app:particlesBackgroundColor="@color/colorParticulas"
-                    app:particleColor="@color/teal_700"
-                    />
 
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
-
                             android:id="@+id/toolbar2"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -68,67 +71,204 @@ app:particleLinesEnabled="false"
 
 
 
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_below="@id/toolbar2"
-    app:cardElevation="10dp"
-    app:cardCornerRadius="20dp"
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardvieww"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar2"
 
 
-    android:id="@+id/cardvieww"
-    android:layout_margin="10dp"
-    android:layout_height="wrap_content"
-        >
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="20dp">
 
-        <TextView
-            android:text="El conocimiento es la llave para el éxito."
-            android:layout_gravity="center"
-            android:textColor="@color/black_white"
-            android:gravity="center"
-            android:id="@+id/textQuote"
+                        <TextView
+                            android:id="@+id/textQuote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+android:textStyle="italic"
+                            android:padding="20dp"
+                            android:text="El conocimiento es la llave para el éxito."
+                            android:textColor="@color/black_white">
 
-            android:padding="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                        </TextView>
 
-        </TextView>
+                </androidx.cardview.widget.CardView>
 
-</androidx.cardview.widget.CardView>
 
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/cardvieww"
+                    android:id="@+id/linearlaa"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@id/cardvieww"
+                            android:text="Todos los cursos"
+                                android:textStyle="bold"
+                            android:layout_marginLeft="20dp"
+                             android:layout_gravity="left"
+                            android:textColor="@color/black_white"
+                                android:layout_weight="1"
+                            android:id="@+id/texto1"
+                            android:layout_height="wrap_content"
+                            >
+
+                        </TextView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@id/cardvieww"
+                            android:text="Ver todos"
+                             android:gravity="right"
+                            android:id="@+id/texto4"
+                            android:layout_marginRight="20dp"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:textColor="@color/black_white"
+
+                            android:layout_height="wrap_content"
+                            >
+
+                        </TextView>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_cursos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearlaa"
+                    android:layout_marginHorizontal="10dp"
+
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_marginBottom="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/recycler_view_cursos"
+                    android:id="@+id/linearlaa2"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@id/cardvieww"
+                            android:text="Cursos con más estudiantes"
+                            android:textStyle="bold"
+                            android:id="@+id/texto2"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="left"
+                            android:textColor="@color/black_white"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            >
+
+                        </TextView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@id/cardvieww"
+                            android:text="Ver todos"
+                            android:gravity="right"
+                            android:id="@+id/texto5"
+                            android:layout_marginRight="20dp"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:textColor="@color/black_white"
+
+                            android:layout_height="wrap_content"
+                            >
+
+                        </TextView>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view_cursos_agregados_reciente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cardvieww"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_below="@id/linearlaa2"
+                    android:layout_marginHorizontal="10dp"
+
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="5dp"
+                    android:layout_marginBottom="20dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/recycler_view_cursos_agregados_reciente"
+                    android:id="@+id/linearlaax"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_below="@id/linearlaa2"
+                            android:text="Incrementa tus habilidades"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="left"
+                            android:textColor="@color/black_white"
+                            android:layout_weight="1"
+                            android:id="@+id/texto3"
+                            android:layout_height="wrap_content"
+                            >
+
+                        </TextView>
+
+
+
+                </LinearLayout>
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_cursos"
+                    android:id="@+id/recyclerview_chatgpt"
                     android:layout_width="match_parent"
-
                     android:layout_height="match_parent"
-                    android:layout_below="@id/recycler_view_cursos_agregados_reciente"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="50dp"
-                    android:padding="16dp"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/linearlaax"
+                    android:layout_marginHorizontal="10dp"
+
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
 
         </RelativeLayout>
 
+        </ScrollView>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/nav_menu" />
 

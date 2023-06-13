@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allCoursesFragment"
+            app:destination="@id/allCoursesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_masEstudianteFragment"
+            app:destination="@id/masEstudianteFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -82,6 +88,14 @@
         android:id="@+id/youtubeVideoDetails"
         android:name="com.kevin.courseApp.ui.main.youtubeVideoDetails.YoutubeVideoDetails"
         android:label="YoutubeVideoDetails" />
+    <fragment
+        android:id="@+id/allCoursesFragment"
+        android:name="com.kevin.courseApp.ui.main.verTodo.AllCoursesFragment"
+        android:label="AllCoursesFragment" />
+    <fragment
+        android:id="@+id/masEstudianteFragment"
+        android:name="com.kevin.courseApp.ui.main.verTodo.MasEstudianteFragment"
+        android:label="MasEstudianteFragment" />
 
 
 </navigation>

@@ -1,62 +1,57 @@
-package com.kevin.courseApp.ui.main.buscar
+package com.kevin.courseApp.ui.main.verTodo
 
-
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import com.kevin.courseApp.databinding.FragmentBuscarBinding
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.*
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.Result
-import com.kevin.courseApp.core.adapterCurso.BuscarAdapter
-import com.kevin.courseApp.core.adapterCurso.CursosAdapter
+import com.kevin.courseApp.core.adapterCurso.CursoAllEstudiantes
 import com.kevin.courseApp.core.adapterCurso.CursosAdapterAll
+import com.kevin.courseApp.core.adapterCurso.CursosAdapterNews
 import com.kevin.courseApp.data.model.Cursos
 import com.kevin.courseApp.data.remote.home.CursosDataSource
-import com.kevin.courseApp.databinding.FragmentHomeBinding
+import com.kevin.courseApp.databinding.FragmentAllCoursesBinding
+import com.kevin.courseApp.databinding.FragmentMasEstudianteBinding
 import com.kevin.courseApp.domain.home.CursosImplement
 import com.kevin.courseApp.presentation.HomeScreenViewModel
 import com.kevin.courseApp.presentation.HomeScreenViewModelFactory
 import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
-import com.kevin.courseApp.ui.main.HomeFragment
 import com.kevin.courseApp.utils.animacionProgress
 
-class BuscarFragment : Fragment(R.layout.fragment_buscar) {
+class MasEstudianteFragment : Fragment(R.layout.fragment_mas_estudiante) {
 
-
-    private lateinit var binding: FragmentBuscarBinding
+    private lateinit var binding: FragmentMasEstudianteBinding
     private lateinit var database: DatabaseReference
-    private lateinit var cursosAdapter: CursosAdapterAll
+    private lateinit var cursosAdapter: CursoAllEstudiantes
 
     private lateinit var viewModel: HomeScreenViewModel
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentBuscarBinding.bind(view)
+        binding = FragmentMasEstudianteBinding.bind(view)
 
         database = FirebaseDatabase.getInstance().reference
 
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewestudiante.layoutManager = LinearLayoutManager(requireContext())
+
+
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
 
 
-
-        cursosAdapter = CursosAdapterAll(listOf())
-        binding.recyclerView.apply {
+        cursosAdapter = CursoAllEstudiantes(listOf())
+        binding.recyclerViewestudiante.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = cursosAdapter
         }
@@ -67,31 +62,9 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
             HomeScreenViewModelFactory(CursosImplement(CursosDataSource()))
         )[HomeScreenViewModel::class.java]
 
-        binding.searchView.postDelayed({
-            binding.searchView.isIconified = false
-            binding.searchView.requestFocus()
-            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(binding.searchView, InputMethodManager.SHOW_IMPLICIT)
-        }, 200)
-
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    searchCursos(newText)
-                }
-                return true
-            }
-        })
 
 
-
-
-
-        viewModel.getCursos().observe(viewLifecycleOwner) { result ->
+        viewModel.getCoursesNew().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {
                     val cursos = result.data
@@ -110,7 +83,7 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
         }
 //llamado a firebase
 
-        cursosAdapter.setOnItemClickListener(object : CursosAdapterAll.OnItemClickListener {
+        cursosAdapter.setOnItemClickListener(object : CursoAllEstudiantes.OnItemClickListener {
             override fun onItemClick(curso: Cursos) {
                 val intent = Intent(activity, CursoDetallesActivity::class.java).apply {
                     putExtra("titulo", curso.titulo)
@@ -134,34 +107,6 @@ class BuscarFragment : Fragment(R.layout.fragment_buscar) {
     }
 
 
-
-
-
-    private fun searchCursos(titulo: String) {
-        val cursos = ArrayList<Cursos>()
-
-        val query = FirebaseDatabase.getInstance().reference.child("cursos")
-
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (cursoSnapshot in dataSnapshot.children) {
-                    val curso = cursoSnapshot.getValue(Cursos::class.java)
-                    if (curso != null && curso.titulo.contains(titulo,ignoreCase = true)) {
-                        cursos.add(curso)
-                    }
-                }
-
-
-                cursosAdapter.cursos = cursos
-                cursosAdapter.notifyDataSetChanged()
-
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w(TAG, "onCancelled", databaseError.toException())
-            }
-        })
-    }
 
 
 
