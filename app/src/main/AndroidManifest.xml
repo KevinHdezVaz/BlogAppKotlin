@@ -16,6 +16,9 @@
         android:theme="@style/Theme.BlogAppKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".ui.main.incrementa_habilidades.FormutodoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.favorites.FavoritosActivity"
             android:exported="false">
             <meta-data

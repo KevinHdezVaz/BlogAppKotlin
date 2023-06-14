@@ -15,6 +15,8 @@
     <color name="md_blue_100">#BBDEFB</color>
     <color name="colorParticulas">#FBFBFB</color>
     <color name="black_white">#000000</color>
+
+    <color name="white_white">#FFFFFF</color>
     <color name="colortoolbar">#2196f3</color>
 
     <color name="fondoazul">#2196f3</color>

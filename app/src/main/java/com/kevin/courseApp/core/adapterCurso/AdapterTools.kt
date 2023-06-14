@@ -14,9 +14,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kevin.courseApp.data.model.Item
 
+
 class AdapterTools : RecyclerView.Adapter<AdapterTools.ViewHolder>() {
     private val data = mutableListOf<Item>()
+    private var onItemClickListener: ((Item) -> Unit)? = null
 
+    private var listener: OnItemClickListener? = null
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageViewVis)
     }
@@ -30,6 +33,9 @@ class AdapterTools : RecyclerView.Adapter<AdapterTools.ViewHolder>() {
         val item = data[position]
 
         holder.imageView.setImageResource(item.imagen)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,5 +46,14 @@ class AdapterTools : RecyclerView.Adapter<AdapterTools.ViewHolder>() {
     fun addItem(item: Item) {
         data.add(item)
         notifyItemInserted(data.size - 1)
+    }
+    interface OnItemClickListener {
+        fun onItemClick(item: Item)
+    }fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
+    fun setOnItemClickListener(listener: (Item) -> Unit) {
+        onItemClickListener = listener
     }
 }

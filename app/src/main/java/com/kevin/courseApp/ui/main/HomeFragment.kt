@@ -43,7 +43,8 @@ import com.kevin.courseApp.presentation.HomeScreenViewModel
 import com.kevin.courseApp.presentation.HomeScreenViewModelFactory
 import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
 import com.kevin.courseApp.ui.main.favorites.FavoritosActivity
-import com.kevin.courseApp.utils.animacionProgress
+import com.kevin.courseApp.ui.main.incrementa_habilidades.FormutodoActivity
+ import com.kevin.courseApp.utils.animacionProgress
 import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
 import com.kevin.courseApp.utils.quotes
 import java.util.*
@@ -115,6 +116,20 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
         cursoTools.addItem(item2)
         cursoTools.addItem(item3)
 
+        cursoTools.setOnItemClickListener { item ->
+            when (item) {
+                item1 -> {
+                }
+                item2 -> {
+                    val intent = Intent(requireContext(), FormutodoActivity::class.java)
+                    requireActivity().startActivity(intent)
+
+                }
+                item3 -> {
+                    // Acción cuando se hace clic en el item3
+                }
+            }
+        }
 
 
         //send to all courses
@@ -414,8 +429,6 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
         epicDialog2!!.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         epicDialog2!!.show()
-
-
 
     }
 

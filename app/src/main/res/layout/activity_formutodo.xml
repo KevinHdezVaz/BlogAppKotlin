@@ -1,0 +1,154 @@
+<RelativeLayout
+
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/backkk"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="3dp"
+            app:cardCornerRadius="28dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+android:background="@color/white_white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                     android:layout_weight="1"
+                    android:gravity="bottom|center"
+                    android:paddingStart="8dp"
+                    android:paddingTop="25dp"
+                     android:paddingEnd="8dp"
+                    android:paddingBottom="8dp"
+                    android:fontFamily="@font/muli"
+
+                    android:id="@+id/descripcionTV"
+                    android:text="Toca cualquier imagen de arriba, te lleva a un juego "
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+            android:id="@+id/carousel3"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="450dp"
+
+            android:translationZ="8dp"
+
+            app:carouselGravity="CENTER"
+            app:carouselType="SHOWCASE"
+            app:imageScaleType="centerCrop"
+            app:showBottomShadow="false"
+            app:showCaption="false"
+            app:showIndicator="false"
+            app:showNavigationButtons="false"
+            app:showTopShadow="false"
+            app:touchToPause="false"
+            app:scaleOnScroll="true"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/carousel3"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:translationZ="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_goto_previous"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                app:backgroundTint="#2c3e50"
+                app:icon="@drawable/ic_arrow_back"
+                app:iconTint="@color/white" />
+
+            <TextView
+                android:id="@+id/custom_caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_regular"
+
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textColor="#2c3e50"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_goto_next"
+                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="8dp"
+                app:backgroundTint="#2c3e50"
+                app:icon="@drawable/ic_arrow_forward"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+        </TextView>
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_descargar"
+        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+         android:layout_height="50dp"
+        app:backgroundTint="@color/md_blue_100"
+        android:text="➡️  DESCARGAR APP  ⬅️"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginBottom="10dp"
+        app:iconTint="@color/white" />
+
+</RelativeLayout>
