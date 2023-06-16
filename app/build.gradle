@@ -20,13 +20,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+           // minifyEnabled false
+           // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures{
         viewBinding = true
@@ -42,7 +42,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
 
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0-beta01'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
     implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
@@ -60,36 +60,23 @@ dependencies {
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation 'io.ktor:ktor-client-android:2.3.0'
 
 
     //circleImage
      implementation 'de.hdodenhof:circleimageview:3.1.0'
-
     //glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
-
-
     implementation 'com.squareup.picasso:picasso:2.8'
-
-    //room
-    implementation "androidx.room:room-runtime:2.4.0"
-
-
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-
     implementation "androidx.gridlayout:gridlayout:1.0.0"
-    //picasoo
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
     //carousel
-
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
-
 //lottie
     implementation "com.airbnb.android:lottie:4.1.0"
     //corrutinas
@@ -109,13 +96,23 @@ dependencies {
 
  //onesignal
     implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
-//boton
-    implementation 'com.github.AbhinavChauhan97:LoaderChip:1.0.4'
+
 
     //carousel
     implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
         //glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
 
+//gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation 'com.google.mlkit:language-id:17.0.4'
+    implementation 'com.aallam.openai:openai-client:3.2.1'
+
+    //markdown
+    implementation "io.noties.markwon:core:4.6.2"
+    implementation "io.noties.markwon:ext-strikethrough:4.6.2"
+    implementation "io.noties.markwon:ext-tables:4.6.2"
+    implementation "io.noties.markwon:ext-tasklist:4.6.2"
 
 }

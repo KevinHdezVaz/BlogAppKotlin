@@ -22,6 +22,54 @@
     <string name="description_onboarding_3">El éxito no llega de la noche a la mañana. \nEs el resultado del trabajo duro, la dedicación y la perseverancia</string>
 
     <string name="start_text_advice">By continuing on this application you agree to our Terms of Use and Privacy Policy</string>
+    <string name="title_new_chat">Nuevo chat</string>
+    <string name="title_edit_chat">Editar chat</string>
+    <string name="tip1">Comeinza tu mensaje con \"Create an image\", \"Create a photo\" o \"/imagine\" para generar imágenes.</string>
+    <string name="tip2">Manten presionado el nombre del chat para editarlo o borrarlo.</string>
+    <string name="tip3">Buscar trucos:\n\nUsa el prefijo \"author:\" para buscar por autor.\nUsa el prefijo \"title:\"para buscar por título. \nUsa el prefijo \"id:\" para buscar por id.\nUsa el prefijo \"cat:\" para buscar por categoría.\nUsa el prefijo \"type:\" para buscar por tipo.</string>
+    <string name="tip4">ChatGPT es demasiado serio? Prueba con otros modelos. A veces puedes obtener resultados muy interesantes.</string>
+    <string name="tip5">Solo los modelos GPT pueden recordar los mensajes anteriores. Los otros modelos no estan optimizados para hacerlo.</string>
+    <string name="tip6">A veces pueden presentarse cosas extrañas o inútiles. Es porque esta aplicación está en prueba beta.</string>
+    <string name="tip7">Selecciona texto en cualquier aplicación y toca \"SpeakGPT\" para comenzar una conversación con el asistente. Esta función está disponible incluso si la aplicación no esta configurada como el asistente predeterminado. También puedes compartir texto con SpeakGPT mediante la opción de compartir predeterminada si la opción de SpeakGPT no está disponible.</string>
+    <string name="tip8">Puedes guardar tu conversación con el asistente. Una vez que se hace clic en el botón de guardar, todos los mensajes futuros también se guardarán.</string>
+    <string name="tip9">SpeakGPT es muy lento? Intenta reducir el numero máximo de tokens por respuesta. Puedes hacerlo en la configuración del modelo.</string>
+    <string name="tip10">La salida de voz de Google puede no estar soportada en todos los dispositivos (especialmente en dispositivos que no cuenten con los Servicios de Google). En ese caso puedes cambiar al modelo Whisper. Ten en cuenta que Whisper es una API de pago y requiere de una conexión a Internet.</string>
+    <string name="activation_prompt_set_message">Toca para seleccionar el prompt de activación</string>
 
+    <string name="title_advanced_settings">Configuración avanzada</string>
+    <string name="select_ai_model">Selecciona el modelo de IA</string>
+    <string name="custom_fine_tuned_model">Modelo personalizado, ajustado a medida</string>
+    <string name="hint_max_tokens">Límite máximo de tokens</string>
+    <string name="max_tokens_desc">ADVERTENCIA: Recomendamos establece el parámetro max_tokens para clasificadores para evitar un uso inútil. Un valor más bajo hará que el proceso de generación sea más rápido, pero puede cortar las respuestas.</string>
+    <string name="hint_prefix">Prefijo</string>
+    <string name="hint_end_separator">Fin del separador</string>
+    <string name="end_separator_desc">Algunos modelos funcionan mejor si se establece un separador final. OpenAI recomienda utilizar el separador \"\\n\\n###\\n\\n\"</string>
+    <string name="gpt_beta_warn">Nota: ChatGPT 4 se encuentra actualmente en versión beta limitada. Únase a la lista de espera para obtener acceso a la API. Si tienes un error, prueba cambiando a otro modelo. Si el rendimiento es lento en un modelo específico, significa que demasiados usuarios lo estan usando al mismo tiempo. Algunos modelos están obsoletos y se eliminarán en el futuro. Consulta la documentación para obtener más información.</string>
+
+
+    <string name="restart_warning">Requiere reiniciar la aplicación</string>
+
+    <string name="setting_change_openai_api_key">Modificar la API key de OpenAI</string>
+    <string name="setting_manage_account_desc">Toca para administrar la cuenta de OpenAI</string>
+    <string name="setting_account">Cuenta</string>
+    <string name="setting_default_desc">Establece SpeakGPT como el asistente predeterminado</string>
+    <string name="setting_default">Configuración del asistente</string>
+    <string name="setting_lang_desc">Establece un idioma para la salida de voz</string>
+    <string name="setting_lang">Idioma del asistente</string>
+    <string name="setting_resolution_desc">Resolución de las imágenes generadas</string>
+    <string name="setting_resolution_note">Nota: Todas las imágenes son cuadradas. Usar una resolución más alta implica costos más altos y una carga mas lenta. Puedes consultar los precios en la página oficial de OpenAI. El precio promedio es de USD 0.018 por imagen.</string>
+    <string name="setting_voice">Sistema de reconocimiento de voz</string>
+    <string name="setting_voice_note">Nota: Es posible que algunas ROMs no admitan el reconocimiento de voz de Google. Whisper API es una API de pago de OpenAI que requiere de una conexion a Internet.</string>
+    <string name="setting_model">Modelo de IA</string>
+    <string name="setting_advanced_desc">Toca para acceder a la configuración avanzada</string>
+    <string name="setting_advanced">Configuración avanzada</string>
+    <string name="setting_act_prompt">Prompt de activación</string>
+    <string name="setting_layout">Diseño del chat</string>
+    <string name="layout_classic">Clásico</string>
+    <string name="layout_bubbles">Burbujas</string>
+    <string name="setting_silent">Modo silencioso</string>
+    <string name="setting_silent_desc">No pronunciar las respuestas del bot</string>
+    <string name="setting_about_desc">Toca para ver la información de la aplicación y del desarrollador</string>
+    <string name="setting_about">Sobre esta aplicación</string>
 
 </resources>

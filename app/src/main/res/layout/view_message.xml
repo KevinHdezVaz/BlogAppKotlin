@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ui"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:paddingBottom="4dp"
+        android:text="Usuario"
+        android:textColor="@color/fondoazul"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+         android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:textIsSelectable="true"
+        android:id="@+id/message"
+        android:focusable="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+android:textColor="@color/white_black"
+ android:text=""
+        android:paddingBottom="16dp"
+          app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/username"/>
+
+    <LinearLayout
+        android:id="@+id/image_frame"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/message">
+
+        <ImageView
+            android:id="@+id/dalle_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:srcCompat="@drawable/assistant"
+            android:descendantFocusability="blocksDescendants"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_copy"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_accent_tonal"
+        android:contentDescription="Copiar"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_frame"
+        app:srcCompat="@drawable/ic_copy" />
+</androidx.constraintlayout.widget.ConstraintLayout>

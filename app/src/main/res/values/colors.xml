@@ -15,13 +15,29 @@
     <color name="md_blue_100">#BBDEFB</color>
     <color name="colorParticulas">#FBFBFB</color>
     <color name="black_white">#000000</color>
+    <color name="accent_100">#e0dbff</color>
+    <color name="window_background">#BBDEFB</color>
+    <color name="accent_250">#4C95CF</color>
+    <color name="marker">#BBDEFB</color>
+    <color name="accent_900">#453374</color>
+    <color name="text_title">#FF000000</color>
+    <color name="accent_500">#a895e9</color>
+    <color name="transparent">#00000000</color>
+    <color name="tip1">#333b2f</color>
+    <color name="error">#FFDB4437</color>
+    <color name="button">#2196F3</color>
+    <color name="neutral_200">#26242b</color>
 
     <color name="white_white">#FFFFFF</color>
     <color name="colortoolbar">#2196f3</color>
 
     <color name="fondoazul">#2196f3</color>
+    <color name="warn_bg">#33DB4437</color>
+    <color name="accent_200">#bab8ff</color>
+    <color name="colorchat">#F5F5F5</color>
 
     <color name="colorTutorial">#3089CF</color>
+    <color name="white_black">#000000</color>
 
     <color name="purple_200">#545455</color>
     <color name="purple_500">#FF6200EE</color>

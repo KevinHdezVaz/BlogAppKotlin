@@ -16,6 +16,22 @@
         android:theme="@style/Theme.BlogAppKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".ui.openia.Menu.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.openia.Menu.MainActivityOpen"
+             android:launchMode="singleTask"
+            android:exported="false" />
+        <activity
+            android:name=".ui.openia.Menu.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.openia.permission.MicrophonePermisoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.openia.assistant.AssistantActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.incrementa_habilidades.FormutodoActivity"
             android:exported="false" />
         <activity

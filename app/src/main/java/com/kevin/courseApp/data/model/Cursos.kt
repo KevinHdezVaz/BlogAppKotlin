@@ -1,9 +1,6 @@
 package com.kevin.courseApp.data.model
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import java.io.Serializable
 
 

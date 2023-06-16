@@ -44,7 +44,8 @@ import com.kevin.courseApp.presentation.HomeScreenViewModelFactory
 import com.kevin.courseApp.ui.main.Detalles.CursoDetallesActivity
 import com.kevin.courseApp.ui.main.favorites.FavoritosActivity
 import com.kevin.courseApp.ui.main.incrementa_habilidades.FormutodoActivity
- import com.kevin.courseApp.utils.animacionProgress
+import com.kevin.courseApp.ui.openia.Menu.MainActivityOpen
+import com.kevin.courseApp.utils.animacionProgress
 import com.kevin.courseApp.utils.animacionProgress.Companion.esconderCarga
 import com.kevin.courseApp.utils.quotes
 import java.util.*
@@ -93,6 +94,7 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
 
 
 
+
         cursosAdapter = CursosAdapter(listOf())
         cursosAdapternew = CursosAdapterNews(listOf())
         cursoTools = AdapterTools()
@@ -119,6 +121,9 @@ class HomeFragment : Fragment(R.layout.fragment_home)   {
         cursoTools.setOnItemClickListener { item ->
             when (item) {
                 item1 -> {
+                    val intent = Intent(requireContext(), MainActivityOpen::class.java)
+                    requireActivity().startActivity(intent)
+
                 }
                 item2 -> {
                     val intent = Intent(requireContext(), FormutodoActivity::class.java)

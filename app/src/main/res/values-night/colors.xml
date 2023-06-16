@@ -3,11 +3,28 @@
 
     <color name="colorParticulas">#343435</color>
 
+    <color name="colorchat">#343435</color>
+    <color name="neutral_200">#26242b</color>
+    <color name="warn_bg">#33DB4437</color>
+
     <color name="colorPrimary">#06111A</color>
     <color name="black_white">#FFFFFF</color>
     <color name="fondoazul">#2196f3</color>
     <color name="colorTutorial">#FFFFFF</color>
     <color name="white_white">#FFFFFF</color>
+    <color name="accent_100">#e0dbff</color>
+    <color name="window_background">#fcfbff</color>
+    <color name="accent_250">#8C8C97</color>
+    <color name="marker">#EC454647</color>
+    <color name="accent_900">#453374</color>
+    <color name="text_title">#FF000000</color>
+    <color name="accent_500">#a895e9</color>
+    <color name="transparent">#00000000</color>
+    <color name="tip1">#333b2f</color>
+    <color name="error">#FFDB4437</color>
+    <color name="button">@color/accent_900</color>
+    <color name="accent_200">#bab8ff</color>
+    <color name="white_black">#FFFFFF</color>
 
     <color name="purple_500">#00B0FF</color>
     <color name="colortoolbar">#343435</color>
