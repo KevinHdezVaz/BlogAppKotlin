@@ -49,10 +49,15 @@ class MainActivityOpen : FragmentActivity() {
 
 
         val preferences = Preferences.getPreferences(this, "")
-        preferences.setApiKey("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", this)
+        preferences.setApiKey("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", this)
         preferences.setBaseUrl("https://api.openai.com/")
+         preferences.setAudioModel("whisper")
+         preferences.setLanguage("es")
+         preferences.setSilence(true)
 
 
+
+         //solo faltaria que funcione el whisper
         navigationBar!!.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item: MenuItem ->
             if (!isAnimating) {
                 isAnimating = true

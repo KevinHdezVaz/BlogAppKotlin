@@ -146,7 +146,7 @@ class Preferences private constructor(private var preferences: SharedPreferences
      * @return The silence mode status, true if enabled or false otherwise.
      */
     fun getSilence() : Boolean {
-        return getBoolean("silence_mode", false)
+        return getBoolean("silence_mode", true)
     }
 
     /**

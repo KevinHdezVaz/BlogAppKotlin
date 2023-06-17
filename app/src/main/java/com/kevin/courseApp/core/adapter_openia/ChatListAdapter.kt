@@ -53,26 +53,21 @@ class ChatListAdapter(data: ArrayList<HashMap<String, String>>?, context: Fragme
         val selector: ConstraintLayout = mView.findViewById(R.id.chat_selector)
         val icon: ImageView = mView.findViewById(R.id.chat_icon)
 
-        icon.setImageResource(R.drawable.chatgpt_icon)
+        icon.setImageResource(R.drawable.logofinal)
 
         name.text = dataArray?.get(position)?.get("name").toString()
 
-        val model: String = Preferences.getPreferences(mContext.requireActivity(), Hash.hash(dataArray?.get(position)?.get("name").toString())).getModel()
 
 
         if (position % 2 == 0) {
             selector.setBackgroundResource(R.drawable.btn_accent_selector_v2)
-            selector.background = getDarkAccentDrawable(
-                ContextCompat.getDrawable(mContext.requireActivity(), R.drawable.btn_accent_selector_v2)!!, mContext.requireActivity())
-            icon.setBackgroundResource(R.drawable.btn_accent_tonal_v3)
+             icon.setBackgroundResource(R.drawable.btn_accent_tonal_v3)
 
         } else {
             selector.setBackgroundResource(R.drawable.btn_accent_selector)
             icon.setBackgroundResource(R.drawable.btn_accent_tonal_v3)
 
-            icon.background = getDarkAccentDrawable(
-                ContextCompat.getDrawable(mContext.requireActivity(), R.drawable.btn_accent_tonal_v3)!!, mContext.requireActivity())
-        }
+             }
 
         selector.setOnClickListener {
             val i = Intent(
@@ -97,15 +92,9 @@ class ChatListAdapter(data: ArrayList<HashMap<String, String>>?, context: Fragme
         return mView
     }
 
-    private fun getDarkAccentDrawable(drawable: Drawable, context: Context) : Drawable {
-        DrawableCompat.setTint(DrawableCompat.wrap(drawable), getSurfaceColor(context))
-        return drawable
-    }
 
 
-    private fun getSurfaceColor(context: Context) : Int {
-        return SurfaceColors.SURFACE_2.getColor(context)
-    }
+
 
 
 }

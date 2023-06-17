@@ -26,7 +26,7 @@ class MicrophonePermisoActivity : FragmentActivity() {
                 this.setResult(RESULT_OK)
                 finish()
             } else {
-                MaterialAlertDialogBuilder(this )
+                MaterialAlertDialogBuilder(this , R.style.AlertDialogTheme)
                     .setTitle("SpeakGPT")
                     .setMessage("You can not use this feature because app do not have microphone access.")
                     .setCancelable(false)

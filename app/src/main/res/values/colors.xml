@@ -28,6 +28,9 @@
     <color name="button">#2196F3</color>
     <color name="neutral_200">#26242b</color>
 
+
+    <color name="letras">#fcfcfc</color>
+
     <color name="white_white">#FFFFFF</color>
     <color name="colortoolbar">#2196f3</color>
 
@@ -43,4 +46,10 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#2B2B2C</color>
     <color name="white">#FFFFFFFF</color>
+
+
+        <color name="bottomNavigationBackground">@color/fondoazul</color>
+        <color name="bottomNavigationIcon">@color/white</color>
+        <color name="bottomNavigationText">@color/white</color>
+
 </resources>

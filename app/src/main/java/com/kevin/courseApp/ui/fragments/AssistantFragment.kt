@@ -51,8 +51,6 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.elevation.SurfaceColors
 import com.google.gson.Gson
-import com.google.mlkit.nl.languageid.LanguageIdentification
-import com.google.mlkit.nl.languageid.LanguageIdentifier
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.adapter_openia.AssistantAdapter
 import com.kevin.courseApp.ui.fragments.dialogs.AddChatDialogFragment
@@ -98,7 +96,6 @@ class AssistantFragment : BottomSheetDialogFragment() {
     private var adapter: AssistantAdapter? = null
     @OptIn(BetaOpenAI::class)
     private var chatMessages: ArrayList<ChatMessage> = arrayListOf()
-    private lateinit var languageIdentifier: LanguageIdentifier
 
     // Init states
     private var isRecording = false
@@ -756,31 +753,7 @@ class AssistantFragment : BottomSheetDialogFragment() {
             )
             )
 
-            if (shouldPronounce && isTTSInitialized && !silenceMode) {
-                if (autoLangDetect) {
-                    languageIdentifier.identifyLanguage(response)
-                        .addOnSuccessListener { languageCode ->
-                            if (languageCode == "und") {
-                                Log.i("MLKit", "Can't identify language.")
-                            } else {
-                                Log.i("MLKit", "Language: $languageCode")
-                                tts!!.language = Locale.forLanguageTag(
-                                    languageCode
-                                )
-                            }
 
-                            tts!!.speak(response, TextToSpeech.QUEUE_FLUSH, null, "")
-                        }.addOnFailureListener {
-                            // Ignore auto language detection if an error is occurred
-                            autoLangDetect = false
-                            ttsPostInit()
-
-                            tts!!.speak(response, TextToSpeech.QUEUE_FLUSH, null, "")
-                        }
-                } else {
-                    tts!!.speak(response, TextToSpeech.QUEUE_FLUSH, null, "")
-                }
-            }
         } catch (e: Exception) {
             response += if (e.stackTraceToString().contains("does not exist")) {
                 "Looks like this model (${model}) is not available to you right now. It can be because of high demand or this model is currently in limited beta."
@@ -914,7 +887,6 @@ class AssistantFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        languageIdentifier = LanguageIdentification.getClient()
 
         dialog?.window?.navigationBarColor = SurfaceColors.SURFACE_1.getColor(requireActivity())
 

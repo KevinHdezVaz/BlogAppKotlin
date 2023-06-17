@@ -106,8 +106,7 @@ dependencies {
 //gson
     implementation 'com.google.code.gson:gson:2.10.1'
 
-    implementation 'com.google.mlkit:language-id:17.0.4'
-    implementation 'com.aallam.openai:openai-client:3.2.1'
+     implementation 'com.aallam.openai:openai-client:3.2.1'
 
     //markdown
     implementation "io.noties.markwon:core:4.6.2"

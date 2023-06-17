@@ -52,8 +52,6 @@ import com.aallam.openai.client.OpenAIHost
 import com.google.android.gms.common.util.IOUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
-import com.google.mlkit.nl.languageid.LanguageIdentification
-import com.google.mlkit.nl.languageid.LanguageIdentifier
 import com.kevin.courseApp.MainActivity
 import com.kevin.courseApp.R
 import com.kevin.courseApp.core.adapter_openia.ChatAdapter
@@ -97,13 +95,12 @@ class ChatActivity : FragmentActivity() {
     private var chatMessages: ArrayList<ChatMessage> = arrayListOf()
     private var chatId = ""
     private var chatName = ""
-    private lateinit var languageIdentifier: LanguageIdentifier
 
     // Init states
     private var isRecording = false
     private var keyboardMode = false
     private var isTTSInitialized = false
-    private var silenceMode = false
+    private var silenceMode = true
     private var autoLangDetect = false
 
     // init AI
@@ -176,6 +173,7 @@ class ChatActivity : FragmentActivity() {
             }
         }
 
+
     private fun ttsPostInit() {
         if (!autoLangDetect) {
             val result = tts!!.setLanguage(
@@ -228,7 +226,6 @@ class ChatActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_chat)
-        languageIdentifier = LanguageIdentification.getClient()
 
 
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
@@ -306,8 +303,7 @@ class ChatActivity : FragmentActivity() {
     @SuppressLint("SetTextI18n")
     private fun initUI() {
         btnMicro = findViewById(R.id.btn_micro)
-        btnSettings = findViewById(R.id.btn_settings)
-        chat = findViewById(R.id.messages)
+         chat = findViewById(R.id.messages)
         messageInput = findViewById(R.id.message_input)
         btnSend = findViewById(R.id.btn_send)
         progress = findViewById(R.id.progress)
@@ -420,7 +416,7 @@ class ChatActivity : FragmentActivity() {
     }
 
     private fun startWhisper() {
-        if (android.os.Build.VERSION.SDK_INT >= 31) {
+        if (Build.VERSION.SDK_INT >= 31) {
             recorder = MediaRecorder(this).apply {
                 setAudioSource(MediaRecorder.AudioSource.MIC)
                 setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
@@ -435,7 +431,7 @@ class ChatActivity : FragmentActivity() {
                 } catch (e: IOException) {
                     btnMicro?.setImageResource(R.drawable.ic_microphone)
                     isRecording = false
-                    MaterialAlertDialogBuilder(this@ChatActivity )
+                     MaterialAlertDialogBuilder(this@ChatActivity )
                         .setTitle("Audio error")
                         .setMessage("Failed to initialize microphone")
                         .setPositiveButton("Close") { _, _, -> }
@@ -821,31 +817,7 @@ class ChatActivity : FragmentActivity() {
                 content = response
             ))
 
-            if (shouldPronounce && isTTSInitialized && !silenceMode) {
-                if (autoLangDetect) {
-                    languageIdentifier.identifyLanguage(response)
-                        .addOnSuccessListener { languageCode ->
-                            if (languageCode == "und") {
-                                Log.i("MLKit", "Can't identify language.")
-                            } else {
-                                Log.i("MLKit", "Language: $languageCode")
-                                tts!!.language = Locale.forLanguageTag(
-                                    languageCode
-                                )
-                            }
 
-                            tts!!.speak(response, TextToSpeech.QUEUE_FLUSH, null, "")
-                        }.addOnFailureListener {
-                            // Ignore auto language detection if an error is occurred
-                            autoLangDetect = false
-                            ttsPostInit()
-
-                            tts!!.speak(response, TextToSpeech.QUEUE_FLUSH, null, "")
-                        }
-                } else {
-                    tts!!.speak(response, TextToSpeech.QUEUE_FLUSH, null, "")
-                }
-            }
         } catch (e: Exception) {
             response += if (e.stackTraceToString().contains("does not exist")) {
                 "Looks like this model (${model}) is not available to you right now. It can be because of high demand or this model is currently in limited beta."

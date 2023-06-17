@@ -25,8 +25,15 @@
     <color name="button">@color/accent_900</color>
     <color name="accent_200">#bab8ff</color>
     <color name="white_black">#FFFFFF</color>
+    <color name="letras">#343435</color>
 
     <color name="purple_500">#00B0FF</color>
     <color name="colortoolbar">#343435</color>
     <color name="white">#FFFFFFFF</color>
+
+
+        <color name="bottomNavigationBackground">#06111A</color>
+        <color name="bottomNavigationIcon">@color/white</color>
+        <color name="bottomNavigationText">@color/white</color>
+
 </resources>

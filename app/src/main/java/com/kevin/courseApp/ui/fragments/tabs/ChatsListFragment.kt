@@ -119,7 +119,6 @@ class ChatsListFragment : Fragment() {
         Log.e("T_DEBUG", "Fragment created")
 
         chatsList = view.findViewById(R.id.chats)
-        btnSettings = view.findViewById(R.id.btn_settings_)
 
 
         btnSettings?.setImageResource(R.drawable.ic_settings)

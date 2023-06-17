@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorParticulas"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_bar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,7 +35,7 @@
         android:id="@+id/fragment_chats"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_bar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,13 +54,30 @@
             tools:layout="@layout/fragment_chats_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/navigation_bar2"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        >
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:itemBackground="@color/bottomNavigationBackground"
+
+         app:itemIconTint="@color/bottomNavigationIcon"
+        app:itemTextColor="@color/bottomNavigationText"
         app:menu="@menu/bottom_menu" />
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

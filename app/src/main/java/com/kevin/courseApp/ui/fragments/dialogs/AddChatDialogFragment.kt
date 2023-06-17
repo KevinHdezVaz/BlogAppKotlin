@@ -55,7 +55,7 @@ class AddChatDialogFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        builder = MaterialAlertDialogBuilder(this.requireContext())
+        builder = MaterialAlertDialogBuilder(this.requireContext(), R.style.AlertDialogTheme )
 
         chatPreferences = ChatPreferences.getChatPreferences()
 
@@ -73,8 +73,8 @@ class AddChatDialogFragment : DialogFragment() {
             builder!!.setView(view)
                 .setCancelable(false)
                 .setPositiveButton("OK") { _, _ -> validateForm() }
-                .setNeutralButton("Delete") { _, _ -> confirmDeletion(requireActivity()) }
-                .setNegativeButton("Cancel") { _, _ -> listener!!.onCanceled() }
+                .setNeutralButton("BORRAR") { _, _ -> confirmDeletion(requireActivity()) }
+                .setNegativeButton("CANCELAR") { _, _ -> listener!!.onCanceled() }
 
             isEdit = true
 
@@ -82,12 +82,14 @@ class AddChatDialogFragment : DialogFragment() {
         } else {
             dialogTitle.text = requireActivity().resources.getString(R.string.title_new_chat)
 
-            nameInput?.setText("New chat ${chatPreferences?.getAvailableChatId(requireActivity())}")
+      //      nameInput?.setText("New chat ${chatPreferences?.getAvailableChatId(requireActivity())}")
 
             builder!!.setView(view)
                 .setCancelable(false)
                 .setPositiveButton("OK") { _, _ -> validateForm() }
-                .setNegativeButton("Cancel") { _, _: Int -> listener!!.onCanceled() }
+                .setNegativeButton("CANCELAR") { _, _: Int -> listener!!.onCanceled() }
+
+
 
             return builder!!.create()
         }
@@ -132,7 +134,7 @@ class AddChatDialogFragment : DialogFragment() {
                 preferences.setEndSeparator(endSeparator)
                 preferences.setPrompt(activationPrompt)
                 preferences.setLayout(layout)
-                preferences.setSilence(silent)
+                preferences.setSilence(true)
             } else {
                 listener!!.onDuplicate()
             }
@@ -140,11 +142,11 @@ class AddChatDialogFragment : DialogFragment() {
     }
 
     private fun confirmDeletion(context: Context) {
-        MaterialAlertDialogBuilder(requireActivity() )
-            .setTitle("Confirm deletion")
-            .setMessage("This action can not be undone.")
-            .setPositiveButton("Delete") { _, _ -> delete(context) }
-            .setNegativeButton("Cancel") { _, _ -> }
+        MaterialAlertDialogBuilder(requireActivity(),  R.style.AlertDialogTheme)
+            .setTitle("Confirma que deseas borrar")
+            .setMessage("Esta acción no se puede rehacer.")
+            .setPositiveButton("BORRAR") { _, _ -> delete(context) }
+            .setNegativeButton("CANCELAR") { _, _ -> }
             .show()
     }
 

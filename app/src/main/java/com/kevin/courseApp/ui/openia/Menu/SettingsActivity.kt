@@ -1,17 +1,32 @@
+/**************************************************************************
+ * Copyright (c) 2023 Dmytro Ostapenko. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************/
+
 package com.kevin.courseApp.ui.openia.Menu
+
 
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.FragmentActivity
@@ -26,11 +41,9 @@ import com.kevin.courseApp.ui.fragments.dialogs.LanguageSelectorDialogFragment
 import com.kevin.courseApp.utils.openai.preferences.ChatPreferences
 import com.kevin.courseApp.utils.openai.preferences.Preferences
 
-
 class SettingsActivity : FragmentActivity() {
 
-    private var btnChangeApi: LinearLayout? = null
-    private var btnChangeAccount: LinearLayout? = null
+     private var btnChangeAccount: LinearLayout? = null
     private var btnSetAssistant: LinearLayout? = null
     private var silenceSwitch: MaterialSwitch? = null
     private var autoLangDetectSwitch: MaterialSwitch? = null
@@ -39,8 +52,7 @@ class SettingsActivity : FragmentActivity() {
     private var dalleResolutions: MaterialButtonToggleGroup? = null
     private var btnModelGroup: MaterialButtonToggleGroup? = null
     private var btnModel: LinearLayout? = null
-    private var btnPrompt: LinearLayout? = null
-    private var btnAbout: LinearLayout? = null
+     private var btnAbout: LinearLayout? = null
     private var r256: MaterialButton? = null
     private var r512: MaterialButton? = null
     private var r1024: MaterialButton? = null
@@ -61,7 +73,6 @@ class SettingsActivity : FragmentActivity() {
     private var activationPrompt = ""
     private var language = "en"
 
-  // private var teslasoftIDClient: TeslasoftIDClient? = null
 
     private var modelChangedListener: AdvancedSettingsDialogFragment.StateChangesListener = object : AdvancedSettingsDialogFragment.StateChangesListener {
         override fun onSelected(name: String, maxTokens: String, endSeparator: String, prefix: String) {
@@ -103,22 +114,7 @@ class SettingsActivity : FragmentActivity() {
         }
     }
 
-    /*
-    private var promptChangedListener: ActivationPromptDialogFragment.StateChangesListener = object : ActivationPromptDialogFragment.StateChangesListener {
-        override fun onEdit(prompt: String) {
-            activationPrompt = prompt
 
-            preferences?.setPrompt(prompt)
-
-            if (activationPrompt != "") {
-                promptDesc?.text = activationPrompt
-            } else {
-                promptDesc?.text = resources.getString(R.string.activation_prompt_set_message)
-            }
-        }
-    }
-
-     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -132,8 +128,7 @@ class SettingsActivity : FragmentActivity() {
     private fun initUI() {
         setContentView(R.layout.activity_settings)
 
-        btnChangeApi = findViewById(R.id.btn_manage_api)
-        silenceSwitch = findViewById(R.id.silent_switch)
+         silenceSwitch = findViewById(R.id.silent_switch)
         autoLangDetectSwitch = findViewById(R.id.autoLangDetect_switch)
         btnClearChat = findViewById(R.id.btn_clear_chat)
         btnDebugMenu = findViewById(R.id.btn_debug_menu)
@@ -149,8 +144,6 @@ class SettingsActivity : FragmentActivity() {
         btnModelGroup = findViewById(R.id.btn_model_s_for)
         btnAutoLanguageDetect = findViewById(R.id.btn_auto_lang_detect)
 
-        btnChangeApi?.background = getDarkAccentDrawable(
-            ContextCompat.getDrawable(this, R.drawable.t_menu_top_item_background)!!, this)
 
         btnChangeAccount?.background = getDarkAccentDrawable(
             ContextCompat.getDrawable(this, R.drawable.t_menu_center_item_background)!!, this)
@@ -164,8 +157,6 @@ class SettingsActivity : FragmentActivity() {
         btnModel?.background = getDarkAccentDrawable(
             ContextCompat.getDrawable(this, R.drawable.t_menu_center_item_background)!!, this)
 
-        btnPrompt?.background = getDarkAccentDrawable(
-            ContextCompat.getDrawable(this, R.drawable.t_menu_center_item_background)!!, this)
 
         btnBubblesView?.background = getDarkAccentDrawable(
             ContextCompat.getDrawable(this, R.drawable.btn_accent_tonal_selector_v3)!!, this)
@@ -229,6 +220,7 @@ class SettingsActivity : FragmentActivity() {
 
 
 
+
         btnSetAssistant?.setOnClickListener {
             val intent = Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -264,24 +256,15 @@ class SettingsActivity : FragmentActivity() {
 
 
 
+
         silenceSwitch?.setOnCheckedChangeListener { _, isChecked -> preferences?.setSilence(isChecked) }
         autoLangDetectSwitch?.setOnCheckedChangeListener { _, isChecked -> preferences?.setAutoLangDetect(isChecked) }
 
-        r256?.setOnClickListener { saveResolution("256x256") }
-        r512?.setOnClickListener { saveResolution("512x512") }
-        r1024?.setOnClickListener { saveResolution("1024x1024") }
 
-        audioGoogle?.setOnClickListener { preferences?.setAudioModel("google") }
-        audioWhisper?.setOnClickListener { preferences?.setAudioModel("whisper") }
 
-        gpt30?.setOnClickListener {
-            model = "gpt-3.5-turbo"
-            preferences?.setModel(model)
-        }
-        gpt40?.setOnClickListener {
-            model = "gpt-4"
-            preferences?.setModel(model)
-        }
+//         audioWhisper?.setOnClickListener { preferences?.setAudioModel("whisper") }
+
+
 
         if (preferences?.getAudioModel().toString() == "google") audioGoogle?.isChecked = true
         else audioWhisper?.isChecked = true
@@ -292,19 +275,9 @@ class SettingsActivity : FragmentActivity() {
         return drawable
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun getDarkAccentDrawableV2(drawable: Drawable) : Drawable {
-        DrawableCompat.setTint(DrawableCompat.wrap(drawable), getSurfaceColorV2())
-        return drawable
-    }
 
     private fun getSurfaceColor(context: Context) : Int {
         return SurfaceColors.SURFACE_2.getColor(context)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun getSurfaceColorV2() : Int {
-        return getColor(R.color.accent_250)
     }
 
     private fun switchUIToClassic() {
@@ -314,16 +287,12 @@ class SettingsActivity : FragmentActivity() {
         btnBubblesView?.background = getDarkAccentDrawable(
             ContextCompat.getDrawable(this, R.drawable.btn_accent_tonal_selector_v3)!!, this)
 
-        btnClassicView?.background = getDarkAccentDrawableV2(
-            ContextCompat.getDrawable(this, R.drawable.btn_accent_tonal_selector_v2)!!)
     }
 
     private fun switchUIToBubbles() {
         btnBubblesView?.setBackgroundResource(R.drawable.btn_accent_tonal_selector_v2)
         btnClassicView?.setBackgroundResource(R.drawable.btn_accent_tonal_selector_v3)
 
-        btnBubblesView?.background = getDarkAccentDrawableV2(
-            ContextCompat.getDrawable(this, R.drawable.btn_accent_tonal_selector_v2)!!)
 
         btnClassicView?.background = getDarkAccentDrawable(
             ContextCompat.getDrawable(this, R.drawable.btn_accent_tonal_selector_v3)!!, this)
